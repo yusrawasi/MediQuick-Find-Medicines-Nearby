@@ -1,3 +1,4 @@
+DB: laravel_mediquick
 php artisan migrate
 composer dump-autoload
 
