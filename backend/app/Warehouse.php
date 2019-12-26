@@ -17,4 +17,8 @@ class Warehouse extends Model
     {
         return $this->HasMany(WarehouseDetails::class); //one warehouse has many details
     }
+    public function managedby()
+    {
+        return $this->belongsTo(User::class); //one warehouse has one user
+    }
 }

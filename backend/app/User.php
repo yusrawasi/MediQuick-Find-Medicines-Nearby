@@ -49,4 +49,9 @@ class User extends Authenticatable
         return $this->HasMany(Inventory::class);  //one useri.e ret manages many inv items
     }
     //to many  order and many inv item for each order
+
+    public function warehouse()
+    {
+        return $this->hasOne(Warehouse::class); //one user has one wh
+    }
 }
