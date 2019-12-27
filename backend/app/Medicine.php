@@ -9,32 +9,32 @@ class Medicine extends Model
     //
     protected $table = 'medicine';
     protected $fillable = [
-        'b_id','d_id','m_id', 'price', 'strips_per_packet', 'sku_productCode',
+        'b_id','d_id','m_id', 'price', 'strips_per_packet', 'sku_productCode', 'packaging'
 
     ];
     public $primaryKey = 'med_id';
 
     public function brand()
     {
-        return $this->belongsTo(Brand::class);
+        return $this->belongsTo(Brand::class,'b_id');
     }
     
     public function dosageform()
     {
-        return $this->belongsTo(DosageForm::class);
+        return $this->belongsTo(DosageForm::class,'d_id');
     }
 
     
     
     public function manufacturer()
     {
-        return $this->belongsTo(Manufacturer::class);
+        return $this->belongsTo(Manufacturer::class,'m_id');
     }
 
     public function genericnames()
     {
        
-    return $this->belongsToMany(Generic::class,'medigeneric','medi_id','g_id')->withPivot('strength');
+    return $this->belongsToMany(Generic::class,'med_generic','med_id','g_id')->withPivot('strength');
     }
 
     public function inventory()

@@ -15,6 +15,6 @@ class Generic extends Model
 
     public function medicines()
     {
-        return $this->belongsToMany(Medicine::class,'medigeneric','g_id','med_id')->withPivot('strength');
+        return $this->belongsToMany(Medicine::class,'med_generic','g_id','med_id')->withPivot('strength');
     }
 }

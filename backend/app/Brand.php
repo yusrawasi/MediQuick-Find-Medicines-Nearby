@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Brands extends Model
+class Brand extends Model
 {
     //
     protected $table = 'brand';
     protected $fillable = [
-        'name',
+        'b_name',
     ];
     public $primaryKey = 'b_id';
     

@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+//use Yajra\Datatables\Datatables;
+
 
 use Illuminate\Http\Request;
-use App\Generic;
+use App\Brand;
 
-class GenericController extends Controller
+class BrandController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +18,9 @@ class GenericController extends Controller
     {
         //
 
-        $generic = Generic::orderBy('g_name')->get();
+        $brand = Brand::orderBy('b_name')->get();
 
-        return $generic ->toJson();
+        return $brand->toJson();
     }
 
     /**
@@ -29,7 +31,7 @@ class GenericController extends Controller
     public function create()
     {
         //
-        //return view('dosage.create');
+        //return view('brands.create');
     }
 
     /**
@@ -42,11 +44,11 @@ class GenericController extends Controller
     {
         //
         $validatedData = $request->validate(['name' => 'required',]);
-        $generic  = Generic::create([
-            'g_name' => $validatedData['name']
+        $brand = Brand::create([
+            'b_name' => $validatedData['name']
             ]);
 
-            return response()->json('Generic Created');
+            return response()->json('Brand Created');
 
     }
 
@@ -60,10 +62,10 @@ class GenericController extends Controller
     {
         //
 
-        $generic = Generic::find($id);
+        $brand = Brand::find($id);
 
-        if($generic!=NULL)
-        {return $generic->toJson();}
+        if($brand!=NULL)
+        {return $brand->toJson();}
         else return;
     }
 
@@ -77,10 +79,10 @@ class GenericController extends Controller
     {
         //
         
-        $generic = Generic::find($id);
+        $brand = Brand::find($id);
 
-        if($generic!=NULL)
-        {return response()->json($generic);}
+        if($brand!=NULL)
+        {return response()->json($brand);}
         else return;
     }
 
@@ -94,11 +96,11 @@ class GenericController extends Controller
     public function update(Request $request, $id)
     {
         
-        $generic = Generic::update([
-            'g_name' => $request->input('name')
+        $brand = Brand::update([
+            'b_name' => $request->input('name')
             ]);
 
-            return response()->json('Generic Updated');
+            return response()->json('Brand Updated');
     }
 
     /**
@@ -110,11 +112,11 @@ class GenericController extends Controller
     public function destroy($id)
     {
         //
-        $generic  = Generic::find($id);
+        $brand = Brand::find($id);
 
-        if($generic !=NULL)
-        {$generic->delete();
-        return response()->json('Generic deleted');}
-        else return response()->json('Generic does not exist');
+        if($brand!=NULL)
+        {$brand->delete();
+        return response()->json('Brand deleted');}
+        else return response()->json('Brand does not exist');
     }
 }

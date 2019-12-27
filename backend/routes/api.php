@@ -20,3 +20,19 @@ use Illuminate\Http\Request;
 // Route::get('/hello', function () {
 //     return 'Hello World';
 // });
+
+Route::resource('brand', 'BrandController');
+Route::get('brand/{id}/delete','BrandController@destroy');
+
+Route::resource('dosage', 'DosageFormController');
+Route::get('dosage/{id}/delete','DosageFormController@destroy');
+
+Route::resource('generic', 'GenericController');
+Route::get('generic/{id}/delete','GenericController@destroy');
+
+
+Route::resource('manufacturer', 'ManufacturerController');
+Route::get('manufacturer/{id}/delete','ManufacturerController@destroy');
+
+Route::resource('medicine', 'MedicineController');
+Route::get('medicine/{id}/delete','MedicineController@destroy');
