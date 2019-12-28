@@ -26,6 +26,8 @@ Route::get('/world', 'HomeController@hello');
 Route::get('/test', 'HomeController@hello');
 Route::resource('brand', 'BrandController');
 Route::get('brand/{id}/delete','BrandController@destroy');
+Route::get('search/brand','BrandController@autoComplete');
+
 
 Route::resource('dosage', 'DosageFormController');
 Route::get('dosage/{id}/delete','DosageFormController@destroy');

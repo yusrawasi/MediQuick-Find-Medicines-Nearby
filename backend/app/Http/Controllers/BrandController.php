@@ -119,4 +119,11 @@ class BrandController extends Controller
         return response()->json('Brand deleted');}
         else return response()->json('Brand does not exist');
     }
+
+    // For autocomplete search results
+    public function autoComplete(){
+        $term = $_GET['term'];
+        $brands = Brand::where('b_name', 'LIKE', "%".$term."%")->get();
+        return response()->json($brands);
+    }
 }
