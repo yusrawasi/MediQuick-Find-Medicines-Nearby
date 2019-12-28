@@ -38,30 +38,15 @@ class MedicineController extends Controller
         foreach($medicines as $MED) {
 
           // $MED = Medicine::find($medicine->med_id);
-           //generic names of a single medicine
-           $i=0;
+           //generic names with strength of a single medicine
+
+            $medgendetail['generics']=[];
             foreach($MED->genericnames as $medigeneric){ //call method genericnames to get gennames
-                $medgen[$i]=$medigeneric->g_name;
-                $i++;
+                $medgen['drugname']= $medigeneric->g_name;
+                $medgen['strength']= $medigeneric->pivot->strength;
+                array_push($medgendetail['generics'], $medgen);
+                $medgen =[];
             }//foreach
-
-
-           //attribute in med_generic mapping to get strength
-        $medi_generics = DB::table('med_generic')->where('med_id',$MED->med_id)->get();
-        $j=0;
-        $med_gen =[];
-
-           foreach($medi_generics as $medi_generic) {
-                
-             $md = array(
-                 "generic" => $medgen[$j],
-                 "strength" => $medi_generic->strength,
-             );
-
-             $j++;
-             array_push($med_gen, $md);
-
-           } //end foreach
            
 
 
@@ -75,12 +60,13 @@ class MedicineController extends Controller
             'packaging' => $MED->packaging,
             'sku_productCode' => $MED->sku_productCode,
 
-            'generics' =>$med_gen,
+            'generics' => $medgendetail['generics']
          );
 
         array_push($MEDI,$med);
         $medgen = []; //empty it before next med
         $med_gen =[]; //empty it before next med
+        $medgendetail['generics'] =[];
       
 
         } //end foreach
@@ -153,29 +139,13 @@ class MedicineController extends Controller
 
            $medicine= Medicine::find($id);
            //generic names of a single medicine
-           $i=0;
+           $medgendetail['generics']=[];
             foreach($medicine->genericnames as $medigeneric){ //call method genericnames to get gennames
-                $medgen[$i]=$medigeneric->g_name;
-                $i++;
+                $medgen['drugname']= $medigeneric->g_name;
+                $medgen['strength']= $medigeneric->pivot->strength;
+                array_push($medgendetail['generics'], $medgen);
+                $medgen =[];
             }//foreach
-
-
-           //attribute in med_generic mapping to get strength
-        $medi_generics = DB::table('med_generic')->where('med_id',$medicine->med_id)->get();
-        $j=0;
-        $med_gen =[];
-
-           foreach($medi_generics as $medi_generic) {
-                
-             $md = array(
-                 "generic" => $medgen[$j],
-                 "strength" => $medi_generic->strength,
-             );
-
-             $j++;
-             array_push($med_gen, $md);
-
-           } //end foreach
            
 
           
@@ -183,13 +153,13 @@ class MedicineController extends Controller
             'med_id' => $medicine->med_id,
             'brand' => $medicine->brand->b_name,
             'dosage' => $medicine->dosageform->d_name,
-            'manufacturer'=> $medicine->manufacturer->d_name,
+            'manufacturer'=> $medicine->manufacturer->m_name,
             'price' => $medicine->price,
             'strips_per_packet' => $medicine->strips_per_packet,
             'packaging' => $medicine->packaging,
             'sku_productCode' => $medicine->sku_productCode,
 
-            'generics' =>$med_gen,
+            'generics' =>$medgendetail['generics'],
          );
 
      

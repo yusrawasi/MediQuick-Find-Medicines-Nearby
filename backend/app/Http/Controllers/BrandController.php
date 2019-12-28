@@ -61,12 +61,45 @@ class BrandController extends Controller
     public function show($id)
     {
         //
-
+        
         $brand = Brand::find($id);
 
         if($brand!=NULL)
         {return $brand->toJson();}
         else return;
+    }
+
+    public function search($brand_name) //user searches by a  brandname
+    {
+         
+        $brand_id = Brand::where('b_name',$brand_name)->first();
+        $brand = Brand::find($brand_id->b_id);
+        $BRANDS=[]; 
+
+            foreach($brand->medicines as $medicine){  //getting all medicines of a samee brand
+                $branddetail['name'] = $brand->b_name;
+                $branddetail['manufacturer'] = $medicine->manufacturer->m_name; 
+                $branddetail['dosage'] = $medicine->dosageform->d_name; 
+                $branddetail['price'] = $medicine->price;
+                $branddetail['strips_per_packet'] = $medicine->strips_per_packet;
+                $branddetail['packaging'] = $medicine->packaging;
+                $branddetail['sku_productCode'] = $medicine->sku_productCode;
+                $branddetail['generics'] = [];  
+                 //for getting the generics in  different medicine of a same brand(eg syrup and injection of panadol)
+            
+                foreach($medicine->genericnames as $genericname){
+
+                        $generic['drugname']= $genericname->g_name;
+                        $generic['strength']= $genericname->pivot->strength;
+                        array_push($branddetail['generics'], $generic);
+                        $generic =[];
+                } //end foreach
+
+                array_push($BRANDS,$branddetail);
+                
+            }//end foreach
+        
+        return $BRANDS;
     }
 
     /**

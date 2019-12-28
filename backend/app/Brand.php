@@ -15,6 +15,6 @@ class Brand extends Model
     
     public function medicines()
     {
-        return $this->hasMany(Medicine::class);
+        return $this->hasMany(Medicine::class,'b_id');
     }
 }
