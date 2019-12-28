@@ -15,25 +15,43 @@ class User extends Authenticatable
      *
      * @var array
      */
+     protected $table = 'user';
     protected $fillable = [
-        'name', 'email', 'password',
+        'u_name', 'u_email', 'u_pw','u_roleid','location_lat','location_long','contact','acc_address','opening_at','closing_at',
     ];
+    public $primaryKey = 'u_id';
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    // protected $hidden = [
+    //     'password', 'remember_token',
+    // ];
 
     /**
      * The attributes that should be cast to native types.
      *
      * @var array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    // protected $casts = [
+    //     'email_verified_at' => 'datetime',
+    // ];
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function inventories()
+    {
+        return $this->HasMany(Inventory::class);  //one useri.e ret manages many inv items
+    }
+    //to many  order and many inv item for each order
+
+    public function warehouse()
+    {
+        return $this->hasOne(Warehouse::class); //one user has one wh
+    }
 }
