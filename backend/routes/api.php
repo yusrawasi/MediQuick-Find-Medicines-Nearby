@@ -23,11 +23,14 @@ use Illuminate\Http\Request;
 
 Route::resource('brand', 'BrandController');
 Route::get('brand/{id}/delete','BrandController@destroy');
+Route::get('brand/{brand_name}/search','BrandController@search');
+//Route::get('brand/search','BrandController@search');
 
 Route::resource('dosage', 'DosageFormController');
 Route::get('dosage/{id}/delete','DosageFormController@destroy');
 
 Route::resource('generic', 'GenericController');
+Route::get('generic/{generic_name}/search','GenericController@search');
 Route::get('generic/{id}/delete','GenericController@destroy');
 
 

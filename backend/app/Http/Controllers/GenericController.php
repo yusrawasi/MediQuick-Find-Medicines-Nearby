@@ -67,6 +67,39 @@ class GenericController extends Controller
         else return;
     }
 
+    public function search($generic_name) //user searches by a  brandname
+    {
+         
+        $generic_id = Generic::where('g_name',$generic_name)->first();
+        $genericname = Generic::find($generic_id->g_id);
+        $GENERICS=[]; 
+
+            foreach($genericname->medicines as $medicine){  //getting all medicines of a samee generic
+                $genericdetail['name'] = $medicine->brand->b_name;
+                $genericdetail['manufacturer'] = $medicine->manufacturer->m_name; 
+                $genericdetail['dosage'] = $medicine->dosageform->d_name; 
+                $genericdetail['price'] = $medicine->price;
+                $genericdetail['strips_per_packet'] = $medicine->strips_per_packet;
+                $genericdetail['packaging'] = $medicine->packaging;
+                $genericdetail['sku_productCode'] = $medicine->sku_productCode;
+                $genericdetail['generics'] = [];  
+                 //for getting the generics in  different medicine of a same brand(eg syrup and injection of panadol)
+            
+                foreach($medicine->genericnames as $genericname){
+
+                        $generic['drugname']= $genericname->g_name;
+                        $generic['strength']= $genericname->pivot->strength;
+                        array_push($genericdetail['generics'], $generic);
+                        $generic =[];
+                } //end foreach
+
+                array_push($GENERICS,$genericdetail);
+                
+            }//end foreach
+        
+        return $GENERICS;
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
