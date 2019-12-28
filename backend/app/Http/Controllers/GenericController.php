@@ -117,4 +117,12 @@ class GenericController extends Controller
         return response()->json('Generic deleted');}
         else return response()->json('Generic does not exist');
     }
+
+
+    // For autocomplete search results
+    public function autoComplete(){
+        $term = $_GET['term'];
+        $generics = Generic::where('g_name', 'LIKE', "%".$term."%")->get();
+        return response()->json($generics);
+    }
 }
