@@ -1,6 +1,14 @@
 version: '3'
 
 services:
+  nginx:
+    container_name: nginx
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.dev
+    restart: always
+    ports:
+      - "3001:80"
 
   #  The Application
   app:
@@ -9,7 +17,8 @@ services:
       context: ./backend
       dockerfile: development/app.dockerfile
     volumes:
-      - ./backend/storage:/var/www/storage
+      # - ./backend/storage:/var/www/storage
+      - ./backend:/var/www
     env_file: '.env.prod'
     environment:
       - "DB_HOST=database"
@@ -17,7 +26,7 @@ services:
 
   # The Web Server
   web:
-    container_name: nginx_server
+    container_name: web
     build:
       context: ./backend
       dockerfile: development/web.dockerfile
@@ -43,6 +52,15 @@ services:
     # redis
   cache:
     image: redis:3.0-alpine
+
+  next:
+    container_name: next
+    build:
+        dockerfile: Dockerfile.dev
+        context: ./next
+    # volumes:
+    #     - /usr/src/app/node_modules
+    #     - ./next:/usr/src/app
 
 volumes:
   dbdata:

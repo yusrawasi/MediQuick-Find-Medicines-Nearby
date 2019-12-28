@@ -20,3 +20,7 @@ use Illuminate\Http\Request;
 // Route::get('/hello', function () {
 //     return 'Hello World';
 // });
+
+Route::get('/hello', 'HomeController@hello');
+Route::get('/world', 'HomeController@hello');
+Route::get('/test', 'HomeController@hello');
