@@ -128,7 +128,8 @@ class MedicineController extends Controller
         // }
         
         foreach($medigenerics as $medigeneric){
-            $medicine->genericnames()->attach($medigeneric['id'],[
+            $medgen = Generic::find($medigeneric['id']);
+            $medicine->genericnames()->save($medgen,['med_id'=>$medicinee->id,'g_id'=>$medigeneric['id'],
                 'strength'=>$medigeneric['strength'] 
             ]);
          }

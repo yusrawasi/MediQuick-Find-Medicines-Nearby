@@ -40,8 +40,9 @@ Route::get('generic/{id}/delete','GenericController@destroy');
 Route::resource('manufacturer', 'ManufacturerController');
 Route::get('manufacturer/{id}/delete','ManufacturerController@destroy');
 
-Route::resource('medicine', 'MedicineController');
 
+Route::resource('medicine', 'MedicineController');
+Route::post('medicine/{id}/store','MedicineController@store');
 Route::get('medicine/{id}/delete','MedicineController@destroy');
 
 Route::get('search/brand','BrandController@autoComplete');
