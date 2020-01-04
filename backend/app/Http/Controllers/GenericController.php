@@ -29,7 +29,7 @@ class GenericController extends Controller
     public function create()
     {
         //
-        //return view('dosage.create');
+        //return view('generic.create');
     }
 
     /**
@@ -67,7 +67,7 @@ class GenericController extends Controller
         else return;
     }
 
-    public function search($generic_name) //user searches by a  brandname
+    public function search($generic_name) //user searches by a  genericname
     {
          
         $generic_id = Generic::where('g_name',$generic_name)->first();
@@ -108,13 +108,9 @@ class GenericController extends Controller
      */
     public function edit($id)
     {
-        //
-        
-        $generic = Generic::find($id);
-
-        if($generic!=NULL)
-        {return response()->json($generic);}
-        else return;
+        $generic=Generic::find($id)->get();
+        //return view(' generic.edit')->with( $generic,'generic');
+    
     }
 
     /**

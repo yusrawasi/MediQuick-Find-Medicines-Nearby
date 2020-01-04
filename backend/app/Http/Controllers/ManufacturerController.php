@@ -76,12 +76,8 @@ class ManufacturerController extends Controller
     public function edit($id)
     {
         //
-        
-        $manufacturer = Manufacturer::find($id);
-
-        if($manufacturer!=NULL)
-        {return response()->json($manufacturer);}
-        else return;
+        $manufacturer=Manufacturer::find($id)->get();
+       // return view('manufacturer.edit')->with($manufacturer,'manufacturer');
     }
 
     /**

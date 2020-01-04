@@ -30,8 +30,8 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
-        //return view('brands.create');
+        
+       // return view('brand.create');
     }
 
     /**
@@ -110,13 +110,8 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        //
-        
-        $brand = Brand::find($id);
-
-        if($brand!=NULL)
-        {return response()->json($brand);}
-        else return;
+        $brand=Brand::find($id)->get();
+       // return view('brand.edit')->with($brand,'brand');
     }
 
     /**

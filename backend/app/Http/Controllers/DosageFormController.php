@@ -29,7 +29,7 @@ class DosageFormController extends Controller
     public function create()
     {
         //
-        //return view('dosage.create');
+        //return view('dosageform.create');
     }
 
     /**
@@ -77,11 +77,8 @@ class DosageFormController extends Controller
     {
         //
         
-        $dosage = DosageForm::find($id);
-
-        if($dosage!=NULL)
-        {return response()->json($dosage);}
-        else return;
+        $dosageform=Brand::find($id)->get();
+        //return view('dosageform.edit')->with($dosageform,'dosageform');
     }
 
     /**
