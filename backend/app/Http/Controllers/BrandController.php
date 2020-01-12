@@ -43,12 +43,13 @@ class BrandController extends Controller
     public function store(Request $request)
     {
         //
-        $validatedData = $request->validate(['name' => 'required',]);
+        $validatedData = $request->validate(['name'=>'required']);
+
         $brand = Brand::create([
             'b_name' => $validatedData['name']
             ]);
 
-            return response()->json('Brand Created');
+        return response()->json('Brand Created');
 
     }
 
