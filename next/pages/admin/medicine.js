@@ -12,12 +12,13 @@ class Medicine extends Component {
       brand: '',
       dosage: '',
       manufacturer: '',
+      packaging: '',
       brands: [],
       dosageForms: [],
       manufacturers: [],
       generics: [],
 
-      genericsSelected: [{g_id: 1, g_name: "", strength: ""}]
+      genericsSelected: [{id: 1, name: "", value:"", strength: ""}]
 
     };
 
@@ -64,7 +65,6 @@ class Medicine extends Component {
   }
 
   handleChange(e){
-      console.log(e.target.name);
       const target = e.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name 
@@ -79,11 +79,25 @@ class Medicine extends Component {
   handleSubmit(e){
     e.preventDefault();
 
-    console.log(this.state);
+    const data = {
+      b_id: this.state.brand.id,
+      m_id: this.state.manufacturer.id,
+      d_id: this.state.dosage.id,
+      packaging: this.state.packaging,
+      med_generics: this.state.genericsSelected,
+      strips_per_packet: '0',
+      sku_productCode: 'MEDXXX',
+      price: '0'
+    }
+
+    console.log(data);
+
+    axios.post('../api/medicine', data)
+    .then(res => console.log(res));
   }
 
   addClick(){
-    this.setState(prevState => ({ genericsSelected: [...prevState.genericsSelected, {g_id: 1, g_name: "", strength: ""}]}))
+    this.setState(prevState => ({ genericsSelected: [...prevState.genericsSelected, {id: 1, name: "", strength: "", value: ""}]}))
   }
   
   removeClick(i){
@@ -130,19 +144,18 @@ class Medicine extends Component {
   }
 
   handleGenericChange(i, event) {
-      let values = [...this.state.genericsSelected];
-      values[i][event.target.name] = event.target.value;
-      this.setState({ genericsSelected: values });
-      console.log(values);
+    let values = [...this.state.genericsSelected];
+    values[i][event.target.name] = event.target.value;
+    this.setState({ genericsSelected: values });
   }
 
   handleGenericChangeSelectReact(i, values, props) {
     let data = [...this.state.genericsSelected];
     data[i][props.name] = values.name;
+    data[i]['value'] = values.name;
+    data[i]['id'] = values.id;
     this.setState({ genericsSelected: data });
-    console.log(data);
-
-}
+  }
 
   render() {
 
@@ -161,62 +174,68 @@ class Medicine extends Component {
                 <Card.Body>
                 <Form onSubmit={this.handleSubmit}>
                   <Row>
-                  <Col md={4}>
-                  <Form.Group controlId="manufacturer">
-                    <Form.Label>Manufacturer</Form.Label>
-                    {/* <Form.Control name="manufacturer" as="select" onChange={this.handleChange}>
-                      {
-                        this.state.manufacturers.map( cat => {
-                          return <option key={cat.m_id} value={cat.m_name}>{cat.m_name}</option>
-                        })
-                      }
+                    <Col md={6}>
+                      <Form.Group controlId="manufacturer">
+                        <Form.Label>Manufacturer</Form.Label>
+                        {/* <Form.Control name="manufacturer" as="select" onChange={this.handleChange}>
+                          {
+                            this.state.manufacturers.map( cat => {
+                              return <option key={cat.m_id} value={cat.m_name}>{cat.m_name}</option>
+                            })
+                          }
 
-                    </Form.Control> */}
-                    <SelectSearch options={this.state.manufacturers} value={this.state.manufacturer} 
-                      onChange={(values, state, props) => {this.setState({[props.name]:values.name})}} 
-                      name="manufacturer" placeholder="Manufacturer" 
-                    />
-                    {/* <Form.Text className="text-muted">
-                      We'll never share your email with anyone else.
-                    </Form.Text> */}
-                  </Form.Group>
-                  </Col>
+                        </Form.Control> */}
+                        <SelectSearch options={this.state.manufacturers} value={this.state.manufacturer.name} 
+                          onChange={(values, state, props) => {this.setState({[props.name]:{id: values.id, name: values.name}})}} 
+                          name="manufacturer" placeholder="Manufacturer" 
+                        />
+                        {/* <Form.Text className="text-muted">
+                          We'll never share your email with anyone else.
+                        </Form.Text> */}
+                      </Form.Group>
+                    </Col>
                   
-                  <Col md={4}>
-                  <Form.Group controlId="brand">
-                    <Form.Label>Brand</Form.Label>
-                    {/* <Form.Control name="brand" as="select" onChange={this.handleChange}>
-                      {
-                        this.state.brands.map( cat => {
-                          return <option key={cat.b_id} value={cat.b_name}>{cat.b_name}</option>
-                        })
-                      }
+                    <Col md={6}>
+                      <Form.Group controlId="brand">
+                        <Form.Label>Brand</Form.Label>
+                        {/* <Form.Control name="brand" as="select" onChange={this.handleChange}>
+                          {
+                            this.state.brands.map( cat => {
+                              return <option key={cat.b_id} value={cat.b_name}>{cat.b_name}</option>
+                            })
+                          }
 
-                    </Form.Control> */}
-                    <SelectSearch options={this.state.brands} value={this.state.brand} 
-                      onChange={(values, state, props) => {this.setState({[props.name]:values.name})}} 
-                      name="brand" placeholder="Brand"
-                    />
-                  </Form.Group>
-                  </Col>
+                        </Form.Control> */}
+                        <SelectSearch options={this.state.brands} value={this.state.brand.name} 
+                          onChange={(values, state, props) => {this.setState({[props.name]:{id: values.id, name: values.name}})}} 
+                          name="brand" placeholder="Brand"
+                        />
+                      </Form.Group>
+                    </Col>
 
-                  <Col md={4}>
-                  <Form.Group controlId="dosageForm" onChange={this.handleChange}>
-                    <Form.Label>Dosage Form</Form.Label>
-                    {/* <Form.Control name="dosageForm" as="select">
-                      {
-                        this.state.dosageForms.map( cat => {
-                          return <option key={cat.d_id} value={cat.d_name}>{cat.d_name}</option>
-                        })
-                      }
+                    <Col md={6}>
+                      <Form.Group controlId="dosageForm" onChange={this.handleChange}>
+                        <Form.Label>Dosage Form</Form.Label>
+                        {/* <Form.Control name="dosageForm" as="select">
+                          {
+                            this.state.dosageForms.map( cat => {
+                              return <option key={cat.d_id} value={cat.d_name}>{cat.d_name}</option>
+                            })
+                          }
 
-                    </Form.Control> */}
-                    <SelectSearch options={this.state.dosageForms} value={this.state.dosage} 
-                      onChange={(values, state, props) => {this.setState({[props.name]:values.name})}} 
-                      name="dosage" placeholder="Dosage Form" 
-                    />
-                  </Form.Group>
-                  </Col>
+                        </Form.Control> */}
+                        <SelectSearch options={this.state.dosageForms} value={this.state.dosage.name} 
+                          onChange={(values, state, props) => {this.setState({[props.name]:{id: values.id, name: values.name}})}} 
+                          name="dosage" placeholder="Dosage Form" 
+                        />
+                      </Form.Group>
+                    </Col>
+                    <Col md={6}>
+                      <Form.Group controlId="packaging" onChange={this.handleChange}>
+                        <Form.Label>Packaging</Form.Label>
+                        <Form.Control style={{height: '75%'}} name="packaging" type="text" value={this.state.packaging} onChange={this.handleChange}/>
+                      </Form.Group>
+                    </Col>
                   </Row>
                   <Form.Group controlId="active">
                     <Form.Check type="checkbox" label="Active" data-toggle="toggle"/>
