@@ -13,6 +13,7 @@ class Medicine extends Model
 
     ];
     public $primaryKey = 'med_id';
+    public $timestamps = false;
 
     public function brand()
     {
