@@ -83,7 +83,8 @@ class MedicineController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {  
+        
         $brands = Brand::all();
         $manufacturers = Manufacturer::all();
         $generics= Generic::all();
@@ -99,30 +100,44 @@ class MedicineController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        // $medicine = Medicine::create([
-        //     'b_id'=>
-        //     'd_id' =>
-        //     'm_id' =>
-        //     'price',
-        //     'strips_per_packet',
-        //     'sku_productCode',
-        //     'packaging'
-        // ]);
-
+    { 
+        $validatedData = $request->validate(['b_id' => 'required','d_id' => 'required','m_id' => 'required']);
+        $medicine = Medicine::create([
+            'b_id'=>    $validatedData['b_id'],
+            'd_id' =>    $validatedData['d_id'],
+            'm_id' =>   $validatedData['m_id'],
+            'price'  => $request['price'],
+            'strips_per_packet'  => $request['price'],
+            'sku_productCode' => $request['sku_productCode'],
+            'packaging' => $request['packaging']
+        ]);
+        
+       /* subarray named med_generics e.g med_generics:[
+            ['id'['1'],'strength'['200mg'] ],
+            ['id'['2'],'strength'['500mg'] ]   ]; */
+        
         //attach in med_generic table along with strength 
-        // $medigenerics = $request->input('medi_generic');
+        $medigenerics = $request->input('med_generics');
 
-        // foreach($medigenerics as $medigeneric){
-        //     $medi_generic = Generic::where('g_name',$medigeneric)->get();
-        //     //$medicine->genericnames()->attach($medi_generic[0]);
-        //     $medicine->genericnames()->save($medi_generic,['med_id'=>$medicine->id,'g_id'=>$medigeneric['id'],
-        //     'strength'=>$medigeneric['strength'] //strength and id by input value
-        //     ])
+        // foreach( $medigenerics as $med_generic) {
+        // $med_generic = DB::table('med_generic')->create([
+        //     'med_id' => $medicine->id,
+        //     'g_id' => $med_generic['id'],
+        //     'strength' => $med_generic['strength']
+        // ]);
         // }
+        
+        foreach($medigenerics as $medigeneric){
+            $medgen = Generic::find($medigeneric['id']);
+            $medicine->genericnames()->save($medgen,['med_id'=>$medicinee->id,'g_id'=>$medigeneric['id'],
+                'strength'=>$medigeneric['strength'] 
+            ]);
+         }
 
-        // return response()->json('Medicine Added');
-
+         return response()->json('Medicine Added');
+         
+    
+        
     }
 
     /**
@@ -230,6 +245,8 @@ class MedicineController extends Controller
         // {$brand->delete();
         return response()->json('Medicine deleted');
     }
-        // else return response()->json('   Brand does not exist');
+    
+  
+
     
 }
