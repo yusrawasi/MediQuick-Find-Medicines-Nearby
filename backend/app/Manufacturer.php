@@ -12,6 +12,7 @@ class Manufacturer extends Model
         'm_name',
     ];
     public $primaryKey = 'm_id';
+    public $timestamps = false;
 
     public function medicines()
     {

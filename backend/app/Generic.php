@@ -12,6 +12,7 @@ class Generic extends Model
         'g_name',
     ];
     public $primaryKey = 'g_id';
+    public $timestamps = false;
 
     public function medicines()
     {

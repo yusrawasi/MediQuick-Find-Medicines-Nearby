@@ -12,6 +12,7 @@ class Brand extends Model
         'b_name',
     ];
     public $primaryKey = 'b_id';
+    public $timestamps = false;
     
     public function medicines()
     {

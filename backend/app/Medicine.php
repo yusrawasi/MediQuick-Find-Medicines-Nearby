@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Medicine extends Model
 {
     //
-    public $timestamps = 'false';
+  //  public $timestamps = 'false';
     protected $table = 'medicine';
     protected $fillable = [
         'b_id','d_id','m_id', 'price', 'strips_per_packet', 'sku_productCode', 'packaging'
 
     ];
     public $primaryKey = 'med_id';
-   
+    public $timestamps = false;
 
     public function brand()
     {

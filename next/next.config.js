@@ -1,4 +1,5 @@
-module.exports = {
+const withCSS = require('@zeit/next-css')
+module.exports = withCSS({
     webpackDevMiddleware: config => {
       config.watchOptions = {
         poll: 1000,
@@ -6,4 +7,4 @@ module.exports = {
       }
       return config
     },
-  }
+  })

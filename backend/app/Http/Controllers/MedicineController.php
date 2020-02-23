@@ -129,7 +129,7 @@ class MedicineController extends Controller
         
         foreach($medigenerics as $medigeneric){
             $medgen = Generic::find($medigeneric['id']);
-            $medicine->genericnames()->save($medgen,['med_id'=>$medicine->id,
+            $medicine->genericnames()->save($medgen,['med_id'=>$medicine->med_id,'g_id'=>$medigeneric['id'],
                 'strength'=>$medigeneric['strength'] 
             ]);
          }
