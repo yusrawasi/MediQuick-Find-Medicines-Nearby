@@ -7,12 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Medicine extends Model
 {
     //
+    public $timestamps = 'false';
     protected $table = 'medicine';
     protected $fillable = [
         'b_id','d_id','m_id', 'price', 'strips_per_packet', 'sku_productCode', 'packaging'
 
     ];
     public $primaryKey = 'med_id';
+   
 
     public function brand()
     {
@@ -51,6 +53,7 @@ class Medicine extends Model
     {
         return $this->hasMany(WarehouseDetails::class); //one medid in many warehouse details
     } 
+
 
 
 }

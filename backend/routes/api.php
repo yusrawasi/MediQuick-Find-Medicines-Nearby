@@ -42,7 +42,7 @@ Route::get('manufacturer/{id}/delete','ManufacturerController@destroy');
 
 
 Route::resource('medicine', 'MedicineController');
-Route::post('medicine/{id}/store','MedicineController@store');
+
 Route::get('medicine/{id}/delete','MedicineController@destroy');
 
 Route::get('search/brand','BrandController@autoComplete');

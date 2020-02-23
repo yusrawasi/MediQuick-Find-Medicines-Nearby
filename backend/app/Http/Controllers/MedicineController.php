@@ -129,7 +129,7 @@ class MedicineController extends Controller
         
         foreach($medigenerics as $medigeneric){
             $medgen = Generic::find($medigeneric['id']);
-            $medicine->genericnames()->save($medgen,['med_id'=>$medicinee->id,'g_id'=>$medigeneric['id'],
+            $medicine->genericnames()->save($medgen,['med_id'=>$medicine->id,
                 'strength'=>$medigeneric['strength'] 
             ]);
          }
@@ -214,11 +214,52 @@ class MedicineController extends Controller
     public function update(Request $request, $id)
     {
         
-        // $brand = Brand::update([
-        //     'b_name' => $request->input('name')
-        //     ]);
+       
+        $medicine = Medicine::update([
+            'b_id'=>   $request['b_id'],
+            
+            'd_id' =>    $request['d_id'],
+            'm_id' =>   $request['m_id'],
+            'price'  => $request['price'],
+            'strips_per_packet'  => $request['price'],
+            'sku_productCode' => $request['sku_productCode'],
+            'packaging' => $request['packaging']
+        ]);
+        
+       /* subarray named med_generics e.g med_generics:[
+            ['id'['1'],'strength'['200mg'] ],
+            ['id'['2'],'strength'['500mg'] ]   ]; */
+        
+        //attach in med_generic table along with strength 
+        $medigenerics = $request->input('med_generics');
 
-        //     return response()->json('Brand Updated');
+        // foreach( $medigenerics as $med_generic) {
+        // $med_generic = DB::table('med_generic')->create([
+        //     'med_id' => $medicine->id,
+        //     'g_id' => $med_generic['id'],
+        //     'strength' => $med_generic['strength']
+        // ]);
+        // }
+
+        //detach old ones
+        $medigenericdelete = DB::table('med_generic')->where('med_id',$id)->get();
+        foreach($medigenericdelete as $mgd)
+        {
+             $mgd->delete();
+        }
+
+        foreach($medigenerics as $medigeneric){
+            
+            $medgen = Generic::find($medigeneric['id']);
+            $medicine->genericnames()->save($medgen,['med_id'=>$medicine->id,
+                'strength'=>$medigeneric['strength'] 
+            ]);
+         }
+
+         return response()->json('Medicine Added');
+         
+    
+        
     }
 
     /**
