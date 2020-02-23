@@ -75,7 +75,7 @@ class GenericController extends Controller
         $GENERICS=[]; 
 
             foreach($genericname->medicines as $medicine){  //getting all medicines of a samee generic
-                $genericdetail['name'] = $medicine->brand->b_name;
+                $genericdetail['brand_name'] = $medicine->brand->b_name;
                 $genericdetail['manufacturer'] = $medicine->manufacturer->m_name; 
                 $genericdetail['dosage'] = $medicine->dosageform->d_name; 
                 $genericdetail['price'] = $medicine->price;
