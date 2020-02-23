@@ -4,6 +4,9 @@ import axios from 'axios';
 import SelectSearch from 'react-select-search';
 import "../../css/style.css";
 
+const $ = require('jquery');
+$.DataTable = require('datatables.net');
+
 class Medicine extends Component {
   constructor (props) {
     super(props);
@@ -13,12 +16,17 @@ class Medicine extends Component {
       dosage: '',
       manufacturer: '',
       packaging: '',
+      price: 0,
+      sku_productCode: 'MEDXXX',
+
       brands: [],
       dosageForms: [],
       manufacturers: [],
       generics: [],
 
-      genericsSelected: [{id: 1, name: "", value:"", strength: ""}]
+      genericsSelected: [{id: 1, name: "", value:"", strength: ""}],
+
+      medicines: []
 
     };
 
@@ -50,16 +58,72 @@ class Medicine extends Component {
     });
 
     axios.get(`../api/generic`).then(response => {
-        // let data = response.data.map((item)=>{
-        //   return {
-        //     id: item.g_id, name: item.g_name, value: item.g_name
-        //   }
-        // });
         const element = response.data[0];
         this.setState({
             generics: response.data.map((item)=>({id: item.g_id, name: item.g_name, value: item.g_name})),
             genericsSelected: [{id: element.g_id, name: element.g_name, value: element.g_name, strength: ''}]
         });
+    });
+
+    axios.get('../api/medicine').then(response => {
+      this.setState({
+        medicines: response.data
+      });
+      console.log(response);
+      this.$el = $(this.el);
+    this.$el.DataTable(
+      {
+        data: this.state.medicines,
+        "columnDefs": [
+          {
+              // The `data` parameter refers to the data for the cell (defined by the
+              // `data` option, which defaults to the column being worked with, in
+              // this case `data: 0`.
+              // "render": function ( data, type, row ) {
+              //     var html = $.parseHTML(data);
+              //     console.log(html);
+              //     return html[0].data;
+              // },
+              // "targets": [1]
+          },
+          // { "visible": true,  "targets": [ 3 ] }
+          {
+            // The `data` parameter refers to the data for the cell (defined by the
+            // `data` option, which defaults to the column being worked with, in
+            // this case `data: 0`.
+            // "render": function ( data, type, row ) {
+            //     var html = $.parseHTML(data);
+            //     console.log(html);
+            //     return html[0].data;
+            // },
+            // "targets": [2]
+        }
+      ],
+        columns: [
+            { title: "ID", data: 'med_id' },
+            { title: "Name", data: 'brand_name' },
+            { title: "Dosage Form", data: 'dosage_name' },
+            { title: "Manufacturer", data: 'manufacturer_name' },
+
+            {
+              mRender: function (data, type, row) {
+                const drugs = row['generics'];
+                let drugList = drugs.map((drug)=>{
+                  return '<span>'+ drug.drugname +': ' + drug.strength + '</span>';
+                });
+                  return '<p>' + drugList + '</p>';
+              }
+            },
+            { title: "Packaging", data: 'packaging' },
+            {
+              mRender: function (data, type, row) {
+                  return '<a href="#" class="table-edit" data-id="' + row[0] + '">EDIT</a>'
+              }
+            }
+           
+        ]
+    }
+    )
     });
     
   }
@@ -86,8 +150,8 @@ class Medicine extends Component {
       packaging: this.state.packaging,
       med_generics: this.state.genericsSelected,
       strips_per_packet: '0',
-      sku_productCode: 'MEDXXX',
-      price: '0'
+      sku_productCode: this.state.sku_productCode,
+      price: this.state.price
     }
 
     console.log(data);
@@ -162,11 +226,13 @@ class Medicine extends Component {
     return (
       <div className="content">
         <link
-        rel="stylesheet"
-        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossOrigin="anonymous"
-      />
+          rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossOrigin="anonymous"
+        />
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"></link>
+
         <Container>
           <Row>
             <Col md={12}>
@@ -174,7 +240,7 @@ class Medicine extends Component {
                 <Card.Body>
                 <Form onSubmit={this.handleSubmit}>
                   <Row>
-                    <Col md={6}>
+                    <Col md={4}>
                       <Form.Group controlId="manufacturer">
                         <Form.Label>Manufacturer</Form.Label>
                         {/* <Form.Control name="manufacturer" as="select" onChange={this.handleChange}>
@@ -195,7 +261,7 @@ class Medicine extends Component {
                       </Form.Group>
                     </Col>
                   
-                    <Col md={6}>
+                    <Col md={4}>
                       <Form.Group controlId="brand">
                         <Form.Label>Brand</Form.Label>
                         {/* <Form.Control name="brand" as="select" onChange={this.handleChange}>
@@ -213,7 +279,7 @@ class Medicine extends Component {
                       </Form.Group>
                     </Col>
 
-                    <Col md={6}>
+                    <Col md={4}>
                       <Form.Group controlId="dosageForm" onChange={this.handleChange}>
                         <Form.Label>Dosage Form</Form.Label>
                         {/* <Form.Control name="dosageForm" as="select">
@@ -230,10 +296,22 @@ class Medicine extends Component {
                         />
                       </Form.Group>
                     </Col>
-                    <Col md={6}>
+                    <Col md={4}>
                       <Form.Group controlId="packaging" onChange={this.handleChange}>
                         <Form.Label>Packaging</Form.Label>
                         <Form.Control style={{height: '75%'}} name="packaging" type="text" value={this.state.packaging} onChange={this.handleChange}/>
+                      </Form.Group>
+                    </Col>
+                    <Col md={4}>
+                      <Form.Group controlId="price" onChange={this.handleChange}>
+                        <Form.Label>Price</Form.Label>
+                        <Form.Control style={{height: '75%'}} name="price" type="number" value={this.state.price} onChange={this.handleChange}/>
+                      </Form.Group>
+                    </Col>
+                    <Col md={4}>
+                      <Form.Group controlId="sku_productCode" onChange={this.handleChange}>
+                        <Form.Label>Product Code</Form.Label>
+                        <Form.Control style={{height: '75%'}} name="sku_productCode" type="text" value={this.state.sku_productCode} onChange={this.handleChange}/>
                       </Form.Group>
                     </Col>
                   </Row>
@@ -258,6 +336,17 @@ class Medicine extends Component {
             </Col>
 
             
+          </Row>
+        </Container>
+        <Container>
+          <Row>
+            <Col md={12}>
+              <Card style={{padding: '20px'}}>
+                <table id="brandDataTable" className="display" width="100%" ref = { el => this.el=el }>
+
+                </table>
+              </Card>
+            </Col>
           </Row>
         </Container>
       </div>

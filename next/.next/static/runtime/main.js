@@ -5157,7 +5157,7 @@ function connect(options) {
       error.name = err.name;
       error.stack = err.stack; // __NEXT_DIST_DIR is provided by webpack
 
-      (0, _sourceMapSupport.rewriteStacktrace)(error, "D:\\Seventh Semester\\FYP\\MediQuick-Find-Medicines-Nearby\\next\\.next");
+      (0, _sourceMapSupport.rewriteStacktrace)(error, "/usr/src/app/.next");
       return error;
     }
   };
