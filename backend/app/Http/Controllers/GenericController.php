@@ -162,7 +162,7 @@ class GenericController extends Controller
         $genericname = Generic::find($id);
         $GENERICS=[];
 
-            foreach($genericname->medicines as $medicine){  //getting all medicines of a samee generic'
+            foreach($genericname->medicines as $medicine){  //getting all medicines of the given generic'
 
 
                 $flag =0;
