@@ -35,7 +35,7 @@ Route::get('dosage/{id}/delete','DosageFormController@destroy');
 Route::resource('generic', 'GenericController');
 Route::get('generic/{generic_name}/search','GenericController@search');
 Route::get('generic/{id}/delete','GenericController@destroy');
-//Route::get('generic/{id}/search','GenericController@search');
+Route::get('generic/{id}/searchid','GenericController@searchByGenericId');
 
 
 Route::resource('manufacturer', 'ManufacturerController');

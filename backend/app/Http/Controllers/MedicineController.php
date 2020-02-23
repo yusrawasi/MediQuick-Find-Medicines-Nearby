@@ -337,6 +337,15 @@ class MedicineController extends Controller
                             $flag=1; }
                          }
 
+                    for ($x = 0; $x < sizeof($medgendetailother) ; $x++){
+                        if(in_array($medgendetailother[$x],$medgendetailoriginal) && ($med->d_id == $medicine->d_id))
+                            {
+                                $flag=0;
+                            }
+                        else{
+                            $flag=1; }
+                         }
+
                     
                    //if(array_diff($medgendetailoriginal, $medgendetailother)==NULL){  //comparing current medicine with the originalmedicine as per the drug and strength
 
