@@ -44,6 +44,7 @@ Route::get('manufacturer/{id}/delete','ManufacturerController@destroy');
 Route::resource('medicine', 'MedicineController');
 
 Route::get('medicine/{id}/delete','MedicineController@destroy');
+Route::get('medicine/{id}/alternate','MedicineController@alternateMedicines');
 
 Route::get('search/brand','BrandController@autoComplete');
 Route::get('search/generic','GenericController@autoComplete');

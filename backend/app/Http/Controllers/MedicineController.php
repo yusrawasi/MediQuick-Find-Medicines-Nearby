@@ -286,8 +286,91 @@ class MedicineController extends Controller
         // {$brand->delete();
         return response()->json('Medicine deleted');
     }
+
     
+    public function alternateMedicines($medId) 
+    {
+        $medicine = Medicine::find($medId);
+
+
+    ///////////////////////////////
   
+       //generic names of a single medicine
+       $medgen =[];
+       $medgendetailoriginal=[];
+        foreach($medicine->genericnames as $medigeneric){ //call method genericnames to get gennames of originalmedicine
+            $medgen['drugname']= $medigeneric->g_name;
+            $medgen['strength']= $medigeneric->pivot->strength;
+            array_push($medgendetailoriginal, $medgen);
+            $medgen =[]; 
+        }//foreach
+
+
+        //checking all other medicine for alternate
+        $medicines = Medicine::all(); 
+        $ALTERNATEMEDICINEIDS=[];
+        $medgendetailother=[];
+
+        foreach($medicines as $med){
+                if($med->med_id != $medId) {
+            
+                    //generic names of a single medicine
+                   
+                    $medgenother =[];
+
+                    foreach($med->genericnames as $medigen){ //call method genericnames to get gennames
+                    $medgenother['drugname']= $medigen->g_name;
+                    $medgenother['strength']= $medigen->pivot->strength;
+                    array_push($medgendetailother, $medgenother);
+                    $medgenother =[];
+                    }//foreach
+
+
+
+                    $flag=1; //1 -not an alternate, 0-alternate
+                    for ($x = 0; $x < sizeof($medgendetailoriginal) ; $x++){
+                        if(in_array($medgendetailoriginal[$x],$medgendetailother) && ($med->d_id == $medicine->d_id))
+                            {
+                                $flag=0;
+                            }
+                        else{
+                            $flag=1; }
+                         }
+
+                    
+                   //if(array_diff($medgendetailoriginal, $medgendetailother)==NULL){  //comparing current medicine with the originalmedicine as per the drug and strength
+
+
+                    if($flag==0)
+                    array_push($ALTERNATEMEDICINEIDS,$med->med_id);
+                     
+     
+
+                }
+               $medgendetailother =[];
+        }
+        ////////////////////
+
+        //details of the alternate medicines
+        $ALTERNATEMEDICINES =[];
+        $alternatemedicinedetails=[];
+
+        foreach($ALTERNATEMEDICINEIDS as $alternatemedicineid){
+              
+            $alternatemedicine = Medicine::find($alternatemedicineid);
+            $alternatemedicinedetails['med_id'] = $alternatemedicine->med_id;
+            $alternatemedicinedetails['brand_name'] = $alternatemedicine->brand->b_name;
+            $alternatemedicinedetails['manfacturer'] = $alternatemedicine->manufacturer->m_name;
+            array_push($ALTERNATEMEDICINES,$alternatemedicinedetails);
+            $alternatemedicinedetails =[];
+
+        }
+        ////////////////////////////////////////////
+   return $ALTERNATEMEDICINES;
+  
+
+}
+
 
     
 }
