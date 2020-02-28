@@ -13,10 +13,10 @@ services:
   #  The Application
   app:
     container_name: laravel_app
-    # build:
-    #   context: ./backend
-    #   dockerfile: development/app.dockerfile
-    image: usmansabir98/laravel_app
+    build:
+      context: ./backend
+      dockerfile: development/app.dockerfile
+    # image: usmansabir98/laravel_app
     volumes:
       # - ./backend/storage:/var/www/storage
       - ./backend:/var/www

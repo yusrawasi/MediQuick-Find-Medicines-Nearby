@@ -21,9 +21,18 @@ use Illuminate\Http\Request;
 //     return 'Hello World';
 // });
 
-Route::get('/hello', 'HomeController@hello');
-Route::get('/world', 'HomeController@hello');
-Route::get('/test', 'HomeController@hello');
+Route::post('register', 'UserController@register');
+Route::post('login', 'UserController@authenticate');
+Route::get('open', 'HomeController@open');
+
+Route::group(['middleware' => ['jwt.verify']], function() {
+  Route::get('user', 'UserController@getAuthenticatedUser');
+  Route::get('closed', 'HomeController@closed');
+});
+
+
+Route::get('world', 'HomeController@hello');
+Route::get('test', 'HomeController@hello');
 Route::resource('brand', 'BrandController');
 Route::get('brand/{id}/delete','BrandController@destroy');
 Route::get('brand/{brand_name}/search','BrandController@search');
