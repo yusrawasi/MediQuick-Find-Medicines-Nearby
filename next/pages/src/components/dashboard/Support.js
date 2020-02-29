@@ -11,7 +11,7 @@ class Index extends React.Component {
         <ListGroup variant="flush" className="deal">
             <ListGroup.Item className="d-flex justify-content-center flex-column">
               <div className="d-flex align-items-center"> 
-                  <img src="./static/images/smith.png" className="rounded-circle" style={{width:"48px"}}/>
+                  <img src="/static/images/smith.png" className="rounded-circle" style={{width:"48px"}}/>
                   <div className="ml-3">
                     <p className="m-0">John Smith</p>
                     <p className="text-sm">Bangalore, India</p> 
@@ -24,7 +24,7 @@ class Index extends React.Component {
             </ListGroup.Item>
             <ListGroup.Item className="d-flex justify-content-center flex-column">
               <div className="d-flex align-items-center"> 
-              <img src="./static/images/katlin.png" className="rounded-circle" style={{width:"48px"}}/>
+              <img src="/static/images/katlin.png" className="rounded-circle" style={{width:"48px"}}/>
               <div className="ml-3">
                 <p className="m-0">Katlin Smith</p>
                 <p className="text-sm">Bangalore, India</p> 
@@ -37,7 +37,7 @@ class Index extends React.Component {
             </ListGroup.Item>
             <ListGroup.Item className="d-flex justify-content-center flex-column">
           <div className="d-flex align-items-center"> 
-            <img src="./static/images/william.png" className="rounded-circle" style={{width:"48px"}}/>
+            <img src="/static/images/william.png" className="rounded-circle" style={{width:"48px"}}/>
             <div className="ml-3">
               <p className="m-0">William saliba</p>
               <p className="text-sm">Bangalore, India</p>
@@ -50,7 +50,7 @@ class Index extends React.Component {
         </ListGroup.Item>
         <ListGroup.Item className="d-flex justify-content-center flex-column">
               <div className="d-flex align-items-center"> 
-                  <img src="./static/images/smith.png" className="rounded-circle" style={{width:"48px"}}/>
+                  <img src="/static/images/smith.png" className="rounded-circle" style={{width:"48px"}}/>
                   <div className="ml-3">
                     <p className="m-0">John S</p>
                     <p className="text-sm">Bangalore, India</p> 

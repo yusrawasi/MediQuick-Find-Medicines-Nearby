@@ -33,7 +33,7 @@ class Index extends React.Component {
               <Nav.Item>
                 <Nav.Link eventKey="second">
                   <div className="profile-img position-relative">
-                    <img src="static/images/user1.png" className="img-fluid" />
+                    <img src="/static/images/user1.png" className="img-fluid" />
                     <i className="fa fa-circle text-success position-absolute" />
                   </div>
                 </Nav.Link>
@@ -41,7 +41,7 @@ class Index extends React.Component {
               <Nav.Item>
                 <Nav.Link eventKey="third">
                   <div className="profile-img position-relative">
-                    <img src="static/images/user3.png" className="img-fluid" />
+                    <img src="/static/images/user3.png" className="img-fluid" />
                     <i className="fa fa-circle text-success position-absolute" />
                   </div>
                 </Nav.Link>
@@ -50,7 +50,7 @@ class Index extends React.Component {
               <Nav.Item>
                 <Nav.Link eventKey="forth">
                   <div className="profile-img position-relative">
-                    <img src="static/images/user4.png" className="img-fluid" />
+                    <img src="/static/images/user4.png" className="img-fluid" />
                     <i className="fa fa-circle text-success position-absolute" />
                   </div>
                 </Nav.Link>
@@ -58,7 +58,7 @@ class Index extends React.Component {
               <Nav.Item>
                 <Nav.Link eventKey="fifth">
                   <div className="profile-img position-relative">
-                    <img src="static/images/user5.png" className="img-fluid" />
+                    <img src="/static/images/user5.png" className="img-fluid" />
                     <i className="fa fa-circle text-success position-absolute" />
                   </div>
                 </Nav.Link>
@@ -67,7 +67,7 @@ class Index extends React.Component {
               <Nav.Item>
                 <Nav.Link eventKey="sixth">
                   <div className="profile-img position-relative">
-                    <img src="static/images/ella.png" className="img-fluid" />
+                    <img src="/static/images/ella.png" className="img-fluid" />
                     <i className="fa fa-circle text-danger position-absolute" />
                     <Badge
                       variant="primary"

@@ -83,7 +83,7 @@ class Layout extends React.Component {
             <meta charSet="utf-8" />
             <link
               rel="icon"
-              href="../static/images/favicon.png"
+              href="/static/images/favicon.png"
               type="image/x-icon"
             />
             <meta
@@ -174,7 +174,7 @@ class Layout extends React.Component {
                   </div>
                 </div>
                 <div className="d-flex align-items-center">
-                  <img src="static/images/chat.png" onClick={this.handleChat} />
+                  <img src="/static/images/chat.png" onClick={this.handleChat} />
                   {' '}
                 </div>
               </Navbar.Collapse>

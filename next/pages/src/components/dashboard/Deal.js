@@ -18,7 +18,7 @@ class Index extends React.Component {
           <Link href=""><a className="btn btn-sm ml-auto cmn-btn">View</a></Link>
         </ListGroup.Item>
         <ListGroup.Item className="d-flex align-items-center">
-          <img src="./static/images/katlin.png" className="rounded-circle" style={{width:"38px"}}/>
+          <img src="/static/images/katlin.png" className="rounded-circle" style={{width:"38px"}}/>
           <div className="ml-3">
             <p className="m-0">Katlin Smith</p>
             <p className="text-sm">Bangalore, India</p> 
@@ -26,7 +26,7 @@ class Index extends React.Component {
           <Link href=""><a className="btn btn-sm ml-auto cmn-btn">View</a></Link>
         </ListGroup.Item>
         <ListGroup.Item className="d-flex align-items-center">
-          <img src="./static/images/william.png" className="rounded-circle" style={{width:"38px"}}/>
+          <img src="/static/images/william.png" className="rounded-circle" style={{width:"38px"}}/>
           <div className="ml-3">
             <p className="m-0">William saliba</p>
             <p className="text-sm">Bangalore, India</p> 
@@ -34,7 +34,7 @@ class Index extends React.Component {
           <Link href=""><a className="btn btn-sm ml-auto cmn-btn">View</a></Link>
         </ListGroup.Item>
         <ListGroup.Item className="d-flex align-items-center">
-          <img src="./static/images/ella.png" className="rounded-circle" style={{width:"38px"}}/>
+          <img src="/static/images/ella.png" className="rounded-circle" style={{width:"38px"}}/>
           <div className="ml-3">
             <p className="m-0">Ella Woodward</p>
             <p className="text-sm">Bangalore, India</p> 
@@ -42,7 +42,7 @@ class Index extends React.Component {
           <Link href=""><a className="btn btn-sm ml-auto cmn-btn">View</a></Link>
         </ListGroup.Item>
         <ListGroup.Item className="d-flex align-items-center">
-          <img src="./static/images/user5.png" className="rounded-circle" style={{width:"38px"}}/>
+          <img src="/static/images/user5.png" className="rounded-circle" style={{width:"38px"}}/>
           <div className="ml-3">
             <p className="m-0">Oliver saliba</p>
             <p className="text-sm">Bangalore, India</p> 
@@ -50,7 +50,7 @@ class Index extends React.Component {
           <Link href=""><a className="btn btn-sm ml-auto cmn-btn">View</a></Link>
         </ListGroup.Item>
         <ListGroup.Item className="d-flex align-items-center">
-          <img src="./static/images/smith.png" className="rounded-circle" style={{width:"38px"}}/>
+          <img src="/static/images/smith.png" className="rounded-circle" style={{width:"38px"}}/>
           <div className="ml-3">
             <p className="m-0">John Smith</p>
             <p className="text-sm">Bangalore, India</p>
@@ -58,7 +58,7 @@ class Index extends React.Component {
           <Link href=""><a className="btn btn-sm ml-auto cmn-btn">View</a></Link>
         </ListGroup.Item>
         <ListGroup.Item className="d-flex align-items-center">
-          <img src="./static/images/katlin.png" className="rounded-circle" style={{width:"38px"}}/>
+          <img src="/static/images/katlin.png" className="rounded-circle" style={{width:"38px"}}/>
           <div className="ml-3">
             <p className="m-0">Katlin Smith</p>
             <p className="text-sm">Bangalore, India</p> 
@@ -66,7 +66,7 @@ class Index extends React.Component {
           <Link href=""><a className="btn btn-sm ml-auto cmn-btn">View</a></Link>
         </ListGroup.Item>
         <ListGroup.Item className="d-flex align-items-center">
-          <img src="./static/images/william.png" className="rounded-circle" style={{width:"38px"}}/>
+          <img src="/static/images/william.png" className="rounded-circle" style={{width:"38px"}}/>
           <div className="ml-3">
             <p className="m-0">William saliba</p>
             <p className="text-sm">Bangalore, India</p> 
@@ -74,7 +74,7 @@ class Index extends React.Component {
           <Link href=""><a className="btn btn-sm ml-auto cmn-btn">View</a></Link>
         </ListGroup.Item>
         <ListGroup.Item className="d-flex align-items-center">
-          <img src="./static/images/ella.png" className="rounded-circle" style={{width:"38px"}}/>
+          <img src="/static/images/ella.png" className="rounded-circle" style={{width:"38px"}}/>
           <div className="ml-3">
             <p className="m-0">Ella Woodward</p>
             <p className="text-sm">Bangalore, India</p> 
@@ -82,7 +82,7 @@ class Index extends React.Component {
           <Link href=""><a className="btn btn-sm ml-auto cmn-btn">View</a></Link>
         </ListGroup.Item>
         <ListGroup.Item className="d-flex align-items-center">
-          <img src="./static/images/user5.png" className="rounded-circle" style={{width:"38px"}}/>
+          <img src="/static/images/user5.png" className="rounded-circle" style={{width:"38px"}}/>
           <div className="ml-3">
             <p className="m-0">Oliver saliba</p>
             <p className="text-sm">Bangalore, India</p> 
