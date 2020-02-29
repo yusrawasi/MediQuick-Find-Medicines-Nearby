@@ -1,0 +1,209 @@
+/* Main Styling */
+/* 
+    Fonts:
+    font-family: 'Poppins', ;
+    font-family: 'Oswald', ;
+    font-family: 'Poppins';
+
+    Colors:
+        Navbar:
+        color: rgb(255, 255, 255);
+
+        Background Color:
+        background: #BABAAB;
+*/
+
+body, html{
+    height: 100%;
+    margin-top: 0px;
+    margin-top: 0px;
+    font-family: 'Poppins';
+    background: #134E5E;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #71B280, #134E5E);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #71B280, #134E5E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+body{
+    padding-top: 70px;
+}
+
+/* =================================Home Page=========================================== */
+.home-page{
+    /* height: 100vh; */
+    padding-top: 20px;
+    background: #BABAAB;
+    height: 100vh;
+}
+
+/* =================================Search Page========================================= */
+.search-page {
+    height: 100%;
+    background: #134E5E;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #71B280, #134E5E);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #71B280, #134E5E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding-top: 20px;
+}
+
+/* Main Form div */
+
+.form{
+    width: 50%;
+    padding-top: 50px;
+    margin: auto auto;
+}
+
+.form Form{
+    width: 100%;
+}
+
+.form input{
+    width: 100%;
+}
+
+.form .button {
+    width: 150px;
+    font-size: 15px;
+    text-align: center;
+    /* padding: 20px; */
+}
+
+.form Radio{
+    text-align: center;
+}
+
+/* ========List of Medicines=========== */
+
+.medicine-list{
+    margin-top: 30px;
+}
+
+.med-name{
+    text-transform: uppercase;
+    font-size: 20px;
+    font-family: 'Poppins';
+    /* text-transform: bold; */
+    font-weight: bold;
+}
+
+.company-name{
+    text-transform: uppercase;
+    font-size: 15px;
+    font-family: 'Oswald';
+    letter-spacing: 1px;
+}
+
+.card-item{
+    border: 1.5px solid black;
+    margin: auto;
+    width: 70%;
+    margin-bottom: 10px;
+
+}
+
+/* .medicine-list-item{
+    margin-top: 20px;
+    margin-bottom: 10px;
+} */
+
+/* Selected Medicine Component */
+
+.dosage-segment{
+    margin-top: 20px;
+}
+
+.dosage-form{
+    text-transform: capitalize;
+    font-size: 20px;
+    font-family: 'Poppins';
+}
+
+.med-form{
+    color: black;
+}
+
+.left-col{
+    text-align: center;
+    padding-top: 20px;
+}
+
+/* ==================================Location Page====================================== */
+
+h1,h2,h3,h4,h5,h6,p,a,ul {
+    font-family: 'Poppins';
+}
+
+.ui.list .list>.item .header, .ui.list>.item .header {
+    display: block;
+    margin: 0;
+    font-family: 'Poppins';
+    font-weight: 700;
+    color: rgba(0,0,0,.87);
+}
+
+/* First Row */
+
+.location-page{
+    font-family: 'Poppins';
+    background: #BABAAB;
+    height: 100%;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+.first-row{
+    background: white;
+    /* margin-top: 20px; */
+    border: 1px solid black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 10px #888888;
+}
+
+/* Selected Medicine Section */
+
+.selected-med h1{
+    margin-bottom: 0px;
+}
+.selected-med p{
+    text-transform: capitalize;
+}
+
+/* Alternate Medcine Section */
+
+.alternate-med{
+    /* margin-top: 10px; */
+    border-left: 1px solid black;
+}
+
+/* Second Row */
+
+.second-row{
+    margin-top: 30px;
+    background: white;
+    margin-top: 20px;
+    border: 1px solid black;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    border-radius: 10px;
+    box-shadow: 5px 10px #888888;
+}
+
+/* Map */
+
+.map {
+    padding: 0;
+    padding-right: 10px;
+}
+
+/* Pharmacy List */
+
+.pharmacy-list{
+    margin-top: 10px;
+    border-left: 1px solid black;
+}
+
+List.item:hover{
+    background-color: brown;
+}
+

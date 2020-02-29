@@ -367,9 +367,9 @@ class MedicineController extends Controller
         foreach($ALTERNATEMEDICINEIDS as $alternatemedicineid){
               
             $alternatemedicine = Medicine::find($alternatemedicineid);
-            $alternatemedicinedetails['med_id'] = $alternatemedicine->med_id;
-            $alternatemedicinedetails['brand_name'] = $alternatemedicine->brand->b_name;
-            $alternatemedicinedetails['manfacturer'] = $alternatemedicine->manufacturer->m_name;
+            $alternatemedicinedetails['id'] = $alternatemedicine->med_id;
+            $alternatemedicinedetails['name'] = $alternatemedicine->brand->b_name;
+            $alternatemedicinedetails['manufacturer'] = $alternatemedicine->manufacturer->m_name;
             array_push($ALTERNATEMEDICINES,$alternatemedicinedetails);
             $alternatemedicinedetails =[];
 

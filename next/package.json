@@ -22,6 +22,27 @@
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
     "react-select-search": "^0.10.1",
-    "semantic-ui-react": "^0.88.2"
+    "semantic-ui-react": "^0.88.2",
+    "@zeit/next-sass": "^1.0.1",
+    "d3-scale": "^3.0.0",
+    "font-awesome": "^4.7.0",
+    "font-awesome-sass": "^4.7.0",
+    "next-fonts": "^0.17.0",
+    "node-sass": "^4.12.0",
+    "prop-types": "^15.7.2",
+    "rc-calendar": "^9.14.5",
+    "rc-select": "^9.1.3",
+    "react-datepicker": "^2.5.0",
+    "react-intl": "^2.8.0",
+    "react-no-ssr": "^1.1.0",
+    "react-simple-maps": "^0.12.1",
+    "recharts": "^1.6.0",
+    "google-maps-react": "^2.0.2",
+    "react-collapsible": "^2.6.2",
+    "react-collapsible-component": "^1.3.3",
+    "react-geocode": "^0.2.1",
+    "react-google-autocomplete": "^1.1.2",
+    "react-google-maps": "^9.4.5",
+    "styled-components": "^5.0.1"
   }
 }

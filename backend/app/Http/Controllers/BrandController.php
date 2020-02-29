@@ -78,6 +78,7 @@ class BrandController extends Controller
         $BRANDS=[]; 
 
             foreach($brand->medicines as $medicine){  //getting all medicines of a samee brand
+                $branddetail['id'] = $medicine->med_id;
                 $branddetail['name'] = $brand->b_name;
                 $branddetail['manufacturer'] = $medicine->manufacturer->m_name; 
                 $branddetail['dosage'] = $medicine->dosageform->d_name; 

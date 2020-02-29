@@ -75,6 +75,7 @@ class GenericController extends Controller
         $GENERICS=[]; 
 
             foreach($genericname->medicines as $medicine){  //getting all medicines of a samee generic
+                $genericdetail['id'] = $medicine->med_id;
                 $genericdetail['name'] = $medicine->brand->b_name;
                 $genericdetail['manufacturer'] = $medicine->manufacturer->m_name; 
                 $genericdetail['dosage'] = $medicine->dosageform->d_name; 
@@ -155,11 +156,11 @@ class GenericController extends Controller
         return response()->json($generics);
     }
 
-    public function searchByGenericId($id) //user searches by a  genericname
+    public function searchByGenericId($term) //user searches by a  genericname
     {
          
-        
-        $genericname = Generic::find($id);
+        $generic_id = Generic::where('g_name',$term)->first();
+        $genericname = Generic::find($generic_id->g_id);
         $GENERICS=[];
 
             foreach($genericname->medicines as $medicine){  //getting all medicines of the given generic'
@@ -169,13 +170,13 @@ class GenericController extends Controller
             
                 for($x=0;$x<sizeof($GENERICS);$x++)
                 {
-                     if($GENERICS[$x]['brand_name']==$medicine->brand->b_name)
+                     if($GENERICS[$x]['name']==$medicine->brand->b_name)
                      $flag =1;
                 }
 
                 if($flag==0) {
 
-                    $genericdetail['brand_name'] = $medicine->brand->b_name;
+                    $genericdetail['name'] = $medicine->brand->b_name;
                     $genericdetail['manufacturer'] = $medicine->manufacturer->m_name; 
                     array_push($GENERICS,$genericdetail); 
                 }

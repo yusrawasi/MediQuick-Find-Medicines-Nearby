@@ -1,200 +1,212 @@
-@import url(http://weloveiconfonts.com/api/?family=fontawesome);
-[class*="fontawesome-"]:before {
-    font-family: 'fontawesome', sans-serif;
+/* Main Styling */
+/* 
+    Fonts:
+    font-family: 'Poppins', ;
+    font-family: 'Oswald', ;
+    font-family: 'Poppins';
+
+    Colors:
+        Navbar:
+        color: rgb(255, 255, 255);
+
+        Background Color:
+        background: #BABAAB;
+*/
+
+body, html{
+    height: 100%;
+    margin-top: 0px;
+    margin-top: 0px;
+    font-family: 'Poppins';
+    background: #134E5E;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #71B280, #134E5E);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #71B280, #134E5E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+body{
+    padding-top: 70px;
 }
 
-.select-search-box {
-    /* width: 300px; */
+/* =================================Home Page=========================================== */
+.home-page{
+    /* height: 100vh; */
+    padding-top: 20px;
+    background: #BABAAB;
+    height: 100vh;
+}
+
+/* =================================Search Page========================================= */
+.search-page {
+    height: 100%;
+    background: #134E5E;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #71B280, #134E5E);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #71B280, #134E5E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding-top: 20px;
+}
+
+/* Main Form div */
+
+.form{
+    width: 50%;
+    padding-top: 50px;
+    margin: auto auto;
+}
+
+.form Form{
     width: 100%;
-    position: relative;
-    margin-bottom: 20px;
-    background: #fff;
-    border-radius: 4px;
 }
 
-    .select-search-box--multiple {
-        border-radius: 4px;
-        box-shadow: 0 7px 14px 0 rgba(50, 50, 93, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.07);
-        overflow: hidden;
-    }
+.form input{
+    width: 100%;
+}
 
-    .select-search-box::after {
-        font-family: fontawesome;
-        content:"\F078";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 40px;
-        text-align: center;
-        line-height: 50px;
-        color: #222f3e;
-        z-index: 1;
-    }
+.form .button {
+    width: 150px;
+    font-size: 15px;
+    text-align: center;
+    /* padding: 20px; */
+}
 
-    .select-search-box--multiple::after, .select-search-box--focus::after {
-        content:"\F002";
-    }
-    
-    .select-search-box__icon--disabled::after {
-        content: none !important;
-    }
+.form Radio{
+    text-align: center;
+}
 
-    .select-search-box--input::after {
-        display: none !important;
-    }
+/* ========List of Medicines=========== */
 
-    .select-search-box__out {
-        display: none;
-    }
+.medicine-list{
+    margin-top: 30px;
+}
 
-    .select-search-box__search {
-        display: block;
-        width: 100%;
-        height: 50px;
-        border: none;
-        background: none;
-        outline: none;
-        font-size: 16px;
-        padding: 0 20px;
-        color: #222f3e;
-        -webkit-appearance: none;
-        box-sizing: border-box;
-        position: relative;
-        z-index: 2;
-        cursor: pointer;
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        line-height: 50px;
-        box-shadow: 0 7px 14px 0 rgba(50, 50, 93, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.07);
-    }
+.med-name{
+    text-transform: uppercase;
+    font-size: 20px;
+    font-family: 'Poppins';
+    /* text-transform: bold; */
+    font-weight: bold;
+}
 
-    input.select-search-box__search {
-        line-height: 1;
-    }
+.company-name{
+    text-transform: uppercase;
+    font-size: 15px;
+    font-family: 'Oswald';
+    letter-spacing: 1px;
+}
 
-    .select-search-box--multiple .select-search-box__search {
-        box-shadow: none;
-    }
+.card-item{
+    border: 1.5px solid black;
+    margin: auto;
+    width: 70%;
+    margin-bottom: 10px;
 
-    .select-search-box--input .select-search-box__search {
-        cursor: text;
-    }
+}
 
-        .select-search-box__search:focus {
-            cursor: text;
-        }
+/* .medicine-list-item{
+    margin-top: 20px;
+    margin-bottom: 10px;
+} */
 
-        .select-search-box__search--placeholder {
-            font-style: italic;
-            font-weight: normal;
-        }
+/* Selected Medicine Component */
 
-    .select-search-box input::-webkit-input-placeholder {
-        color: #ccc;
-        font-style: italic;
-        font-weight: normal;
-    }
+.dosage-segment{
+    margin-top: 20px;
+}
 
-    .select-search-box input::-moz-placeholder {
-        color: #ccc;
-        font-style: italic;
-        font-weight: normal;
-    }
+.dosage-form{
+    text-transform: capitalize;
+    font-size: 20px;
+    font-family: 'Poppins';
+}
 
-    .select-search-box input:-moz-placeholder {
-        color: #ccc;
-        font-style: italic;
-        font-weight: normal;
-    }
+.med-form{
+    color: black;
+}
 
-    .select-search-box input:-ms-input-placeholder {
-        color: #ccc;
-        font-style: italic;
-        font-weight: normal;
-    }
+.left-col{
+    text-align: center;
+    padding-top: 20px;
+}
 
-    input[type='search']::-webkit-search-cancel-button, input[type='search']::-webkit-search-decoration {
-        -webkit-appearance: none;
-    }
+/* ==================================Location Page====================================== */
 
-    .select-search-box__select {
-        display: none;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        right: 0;
-        background: #fff;
-        border-radius: 4px;
-        overflow: auto;
-        box-shadow: 0 7px 14px 0 rgba(50, 50, 93, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.07);
-        z-index: 100;
-        min-height: 49px;
-    }
+h1,h2,h3,h4,h5,h6,p,a,ul {
+    font-family: 'Poppins';
+}
 
-    .select-search-box--multiple .select-search-box__select {
-        display: block;
-        position: static;
-        border-top: 1px solid #eee;
-        border-radius: 0;
-        box-shadow: none;
-    }
+.ui.list .list>.item .header, .ui.list>.item .header {
+    display: block;
+    margin: 0;
+    font-family: 'Poppins';
+    font-weight: 700;
+    color: rgba(0,0,0,.87);
+}
 
-        .select-search-box__select--display {
-            display: block;
-        }
+/* First Row */
 
-    .select-search-box__option {
-        font-size: 16px;
-        font-weight: 400;
-        color: #616b74;
-        padding: 15px 20px;
-        border-top: 1px solid #eee;
-        cursor: pointer;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        user-select: none;
-    }
+.location-page{
+    font-family: 'Poppins';
+    background: #BABAAB;
+    height: 100%;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
 
-        .select-search-box__option:first-child {
-            border-top: none;
-        }
+.first-row{
+    background: white;
+    /* margin-top: 20px; */
+    border: 1px solid black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 10px #888888;
+}
 
-        .select-search-box__option--hover, .select-search-box__option:hover {
-            background: #f4f7fa;
-        }
+/* Selected Medicine Section */
 
-        .select-search-box__option--selected {
-            background: #54A0FF;
-            color: #fff;
-            border-top-color: #2184ff;
-        }
+.selected-med h1{
+    margin-bottom: 0px;
+}
+.selected-med p{
+    text-transform: capitalize;
+}
 
-            .select-search-box__option--selected:hover, .select-search-box__option--selected.select-search-box__option--hover {
-                background: #2184ff;
-                color: #fff;
-                border-top-color: #2184ff;
-            }
+/* Alternate Medcine Section */
 
-        .select-search-box__group {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            position: relative;
-        }
+.alternate-med{
+    /* margin-top: 10px; */
+    border-left: 1px solid black;
+}
 
-        .select-search-box__group-header {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 0 10px;
-            color: rgba(0, 0, 0, 0.5);
-            font-size: 12px;
-        }
+/* Second Row */
+
+.second-row{
+    margin-top: 30px;
+    background: white;
+    margin-top: 20px;
+    border: 1px solid black;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    border-radius: 10px;
+    box-shadow: 5px 10px #888888;
+}
+
+/* Map */
+
+.map {
+    padding: 0;
+    padding-right: 10px;
+}
+
+/* Pharmacy List */
+
+.pharmacy-list{
+    margin-top: 10px;
+    border-left: 1px solid black;
+}
+
+List.item:hover{
+    background-color: brown;
+}
+
+
 
 /*# sourceMappingURL=styles.chunk.css.map*/
