@@ -17,6 +17,7 @@ import NativeBase
 import AntDesign from '../src/components/dashboard/Applicationsales/AntDesign';
 import WorkProgress from '../src/components/dashboard/WorkProgress';
 import {Row, Col, Card, CardText, Button, Nav, Tab} from 'react-bootstrap';
+import {handleAuthSSR} from '../src/components/handleAuthSSR';
 import Link from 'next/link';
 
 class Login extends React.Component {
@@ -35,23 +36,23 @@ class Login extends React.Component {
           <Col lg={3} md={6} sm={12} className="stats">
             <Stats
               icon="2"
-              text="Inventary Turnover"
-              number="$2.65M"
+              text="Revenue"
+              number="Rs. 2.65M"
               statsbg="skyBg"
             />
           </Col>
           <Col lg={3} md={6} sm={12} className="stats">
             <Stats
               icon="3"
-              text="New Projects"
-              number="60+"
+              text="Tenants"
+              number="60"
               statsbg="greenBg"
             />
           </Col>
           <Col lg={3} md={6} sm={12} className="stats">
             <Stats
               icon="4"
-              text="Client Meetings"
+              text="Medicines"
               number="396"
               statsbg="pinkBg"
             />
@@ -134,7 +135,7 @@ class Login extends React.Component {
                     </Link>
                   </Card.Header>
                   <Card.Body className="p-0 h-417 overflow-auto">
-                    <Deal />
+                    {/* <Deal /> */}
                   </Card.Body>
                 </Card>
               </Col>
@@ -143,19 +144,19 @@ class Login extends React.Component {
                   <Card.Header>Application Sales</Card.Header>
                   <Card.Body className="application-sales pt-1">
                     <div className="d-flex justify-content-between align-items-center">
-                      <p className="mb-0 appname text-md">BuilderX</p>
+                      <p className="mb-0 appname text-md">Manufacturers</p>
                       <BuilderXsales />
-                      <p className="mb-0 salecount">$30,000</p>
+                      <p className="mb-0 salecount">Rs. 30,000</p>
                     </div>
                     <div className="d-flex justify-content-between align-items-center">
-                      <p className="mb-0 appname text-md">NativeBase</p>
+                      <p className="mb-0 appname text-md">Distributors</p>
                       <NativeBase />
-                      <p className="mb-0 salecount">$80,000</p>
+                      <p className="mb-0 salecount">Rs. 80,000</p>
                     </div>
                     <div className="d-flex justify-content-between align-items-center">
-                      <p className="mb-0 appname text-md">Ant Design</p>
+                      <p className="mb-0 appname text-md">Retailers</p>
                       <AntDesign />
-                      <p className="mb-0 salecount">$20,000</p>
+                      <p className="mb-0 salecount">Rs. 20,000</p>
                     </div>
                   </Card.Body>
                 </Card>
@@ -193,6 +194,17 @@ class Login extends React.Component {
       </Layout>
     );
   }
+}
+
+Login.getInitialProps = async (ctx) => {
+  // Must validate JWT
+  // If the JWT is invalid it must redirect
+  // back to the main page. You can do that
+  // with Router from 'next/router
+  await handleAuthSSR(ctx);
+
+  // Must return an object
+  return {}
 }
 
 export default Login;

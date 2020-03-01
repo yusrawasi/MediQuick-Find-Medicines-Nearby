@@ -8,7 +8,8 @@ import "../css/styles.css";
 
 //Importing Components
 import Navbar from '../components/Layout/Navbar';
-import Map from '../components/LocationComponents/Map';
+// import Map from '../components/LocationComponents/Map';
+import MapContainer from '../components/LocationComponents/Map';
 import AlternateMedicines from '../components/LocationComponents/AlternateMedicines';
 
 //Importing data
@@ -96,12 +97,13 @@ class Location extends Component{
                         </Col>
                     </Row>
 
-                    <Map
+                    {/* <Map
                         google={this.props.google}
                         center={{lat: 24.9298, lng: 67.1148}}
                         height='300px'
                         zoom={12}
-                    />
+                    /> */}
+                    <MapContainer />
                 </Container>
             </div>
         );

@@ -1,6 +1,8 @@
 //Displaying the list of pharmacies on the location page
 import react from 'react';
 import { List, Loader } from 'semantic-ui-react';
+import {GoogleApiWrapper} from 'google-maps-react';
+const GOOGLE_MAPS_API_KEY = "AIzaSyDUtGLl70yxAlVHl08pOvTeTRyF5_vrglc";
 
 class Pharmacies extends react.Component{    
     
@@ -14,10 +16,13 @@ class Pharmacies extends react.Component{
     }
 
     componentDidMount(){
+        console.log("component did mount");
         this.calculateDistances();
     }
 
     componentDidUpdate(prevProps) {
+        console.log("this location ", this.props.currentLocation);
+        console.log("previous location ", prevProps.currentLocation);
         if(!(this.props.currentLocation == prevProps.currentLocation)) // Check if it's a new user, you can also use some unique property, like the ID  (this.props.user.id !== prevProps.user.id)
         {
           this.calculateDistances();
@@ -40,6 +45,7 @@ class Pharmacies extends react.Component{
         let origin = new google.maps.LatLng(currentLocation.lat, currentLocation.lng);
         let service = new google.maps.DistanceMatrixService();
 
+        console.log("origin ", origin);
         console.log("service ", service);
 
         service.getDistanceMatrix({
@@ -77,9 +83,7 @@ class Pharmacies extends react.Component{
     }
 }
 
-export default Pharmacies;
-
-// export default GoogleApiWrapper({
-//     apiKey: (GOOGLE_MAPS_API_KEY)
-// })(Pharmacies);
+export default GoogleApiWrapper({
+    apiKey: (GOOGLE_MAPS_API_KEY)
+})(Pharmacies);
 

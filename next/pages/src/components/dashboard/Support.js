@@ -13,8 +13,8 @@ class Index extends React.Component {
               <div className="d-flex align-items-center"> 
                   <img src="/static/images/smith.png" className="rounded-circle" style={{width:"48px"}}/>
                   <div className="ml-3">
-                    <p className="m-0">John Smith</p>
-                    <p className="text-sm">Bangalore, India</p> 
+                    <p className="m-0">Usman Sabir</p>
+                    <p className="text-sm">Karachi, Pakistan</p> 
                   </div>
                   <span className="badge badge-primary ml-auto p-1">Progress</span>
               </div>
@@ -26,8 +26,8 @@ class Index extends React.Component {
               <div className="d-flex align-items-center"> 
               <img src="/static/images/katlin.png" className="rounded-circle" style={{width:"48px"}}/>
               <div className="ml-3">
-                <p className="m-0">Katlin Smith</p>
-                <p className="text-sm">Bangalore, India</p> 
+                <p className="m-0">Yusra Wasi</p>
+                <p className="text-sm">Karachi, Pakistan</p> 
               </div>
               <span className="badge badge-success ml-auto p-1">Open</span>
               </div>
@@ -39,8 +39,8 @@ class Index extends React.Component {
           <div className="d-flex align-items-center"> 
             <img src="/static/images/william.png" className="rounded-circle" style={{width:"48px"}}/>
             <div className="ml-3">
-              <p className="m-0">William saliba</p>
-              <p className="text-sm">Bangalore, India</p>
+              <p className="m-0">Muneeb Ahmed</p>
+              <p className="text-sm">Karachi, Pakistan</p>
             </div>
             <span className="badge badge-danger ml-auto p-1">Closed</span>
           </div>
@@ -52,8 +52,8 @@ class Index extends React.Component {
               <div className="d-flex align-items-center"> 
                   <img src="/static/images/smith.png" className="rounded-circle" style={{width:"48px"}}/>
                   <div className="ml-3">
-                    <p className="m-0">John S</p>
-                    <p className="text-sm">Bangalore, India</p> 
+                    <p className="m-0">Customer 1</p>
+                    <p className="text-sm">Lahore, Pakistan</p> 
                   </div>
                   <span className="badge badge-primary ml-auto p-1">Progress</span>
               </div>

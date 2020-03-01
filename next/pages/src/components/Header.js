@@ -1,8 +1,34 @@
 import * as React from 'react';
 import Link from 'next/link';
-import {Nav, NavDropdown, FormControl, Form, Badge} from 'react-bootstrap';
+import {Nav, NavDropdown, FormControl, Form, Badge, Button} from 'react-bootstrap';
+import axios from 'axios';
+import { Cookies } from 'react-cookie';
+import Router from 'next/router';
+
+const cookies = new Cookies();
 
 class Header extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.onClick = this.onClick.bind(this);
+    this.state = {
+      token: cookies.get('user_token') || null
+    }
+  }
+
+  onClick(e){
+    e.preventDefault();
+    const reference = this;
+    axios.get('/api/logout', { headers: { 'Authorization': 'bearer '+this.state.token } })
+      .then(response => {
+        console.log(response.data);
+        // cookies.set('token', null);
+        reference.setState({token: null});
+        Router.push('/panel');
+      })
+  }
+
   render () {
     return (
       <Nav className="align-items-center">
@@ -47,6 +73,7 @@ class Header extends React.Component {
                 <p className="mb-0">Log Out</p>
               </a>
             </Link>
+            <Button onClick={this.onClick}>Log Out</Button>
           </NavDropdown.Item>
         </NavDropdown>
       </Nav>

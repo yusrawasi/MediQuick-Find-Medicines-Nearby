@@ -23,9 +23,6 @@ body, html{
     background: linear-gradient(to right, #71B280, #134E5E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-body{
-    padding-top: 70px;
-}
 
 /* =================================Home Page=========================================== */
 .home-page{
@@ -146,7 +143,7 @@ h1,h2,h3,h4,h5,h6,p,a,ul {
     font-family: 'Poppins';
     background: #BABAAB;
     height: 100%;
-    padding-top: 20px;
+    padding-top: 90px;
     padding-bottom: 40px;
 }
 
@@ -179,6 +176,7 @@ h1,h2,h3,h4,h5,h6,p,a,ul {
 /* Second Row */
 
 .second-row{
+    min-height: 550px;
     margin-top: 30px;
     background: white;
     margin-top: 20px;
@@ -193,7 +191,7 @@ h1,h2,h3,h4,h5,h6,p,a,ul {
 
 .map {
     padding: 0;
-    padding-right: 10px;
+    /* padding-right: 10px; */
 }
 
 /* Pharmacy List */

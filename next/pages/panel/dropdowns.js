@@ -17,18 +17,18 @@ class Dropdowns extends React.Component {
         <div>
           <Row>
             <Col sm={12}>
-              <Card>
+              {/* <Card>
                 <Card.Header>Navbar Dropdowns</Card.Header>
                 <Card.Body> <Navbardefault /></Card.Body>
-              </Card>
-              <Card className="m-t-15 pb-1">
+              </Card> */}
+              {/* <Card className="m-t-15 pb-1">
                 <Card.Header> Regular Dropdowns</Card.Header>
                 <Card.Body><Regulardropdowns /></Card.Body>
               </Card>
               <Card className="m-t-15">
                 <Card.Header>Split Dropdowns</Card.Header>
                 <Card.Body><Splitdropdowns /></Card.Body>
-              </Card>
+              </Card> */}
             </Col>
           </Row>
         </div>

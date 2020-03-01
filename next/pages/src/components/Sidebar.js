@@ -48,39 +48,40 @@ class Index extends React.Component {
             <NavDropdown
               className="dashboard "
               title={
-                <span><i className="fa fa-gear mr-2 ml-2" /> Dashboard</span>
+                <span><i className="fa fa-gear mr-2 ml-2" /> Catalogue</span>
               }
               id="dashboard-layouts"
             >
               <li>
-                <Link href="/panel/dashboard">
+                <Link href="/panel/brand">
                   <a className="child-nav-list dropdown-item dashboard">
-                    Dashboard
+                    Brand
                   </a>
                 </Link>
               </li>
               <li>
-                <Link onClick={this.handleOpenModal}>
-                  <a
-                    className="child-nav-list dropdown-item layout-2"
-                    onClick={this.handleOpenModal}
-                  >
-                    Dashboard 2
+                <Link href="/panel/generic">
+                  <a className="child-nav-list dropdown-item dashboard">
+                    Generic
                   </a>
                 </Link>
               </li>
               <li>
-                <Link onClick={this.handleOpenModal}>
-                  <a
-                    className="child-nav-list dropdown-item layout-3"
-                    onClick={this.handleOpenModal}
-                  >
-                    Dashboard 3
+                <Link href="/panel/manufacturer">
+                  <a className="child-nav-list dropdown-item dashboard">
+                    Manufacturer
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/panel/medicine">
+                  <a className="child-nav-list dropdown-item dashboard">
+                    Medicine
                   </a>
                 </Link>
               </li>
             </NavDropdown>
-            <NavDropdown
+            {/* <NavDropdown
               className="elements "
               title={
                 <span><i className="fa fa-edit mr-2 ml-2" /> UI Elements</span>
@@ -132,9 +133,9 @@ class Index extends React.Component {
                   </a>
                 </Link>
               </li>
-            </NavDropdown>
+            </NavDropdown> */}
 
-            <NavDropdown
+            {/* <NavDropdown
               className="form "
               title={
                 <span><i className="fa fa-file mr-2 ml-2" /> Form Stuffs</span>
@@ -155,10 +156,10 @@ class Index extends React.Component {
                   </a>
                 </Link>
               </li>
-            </NavDropdown>
+            </NavDropdown> */}
             <Link onClick={this.handleOpenModal}>
               <a className="nav-link data-table" onClick={this.handleOpenModal}>
-                <i className="fa fa-th mr-2 ml-2" /> Data Tables
+                <i className="fa fa-th mr-2 ml-2" /> Company Profile
               </a>
             </Link>
             <Link onClick={this.handleOpenModal}>
@@ -172,21 +173,21 @@ class Index extends React.Component {
             </Link>
             <Link onClick={this.handleOpenModal}>
               <a className="nav-link charts" onClick={this.handleOpenModal}>
-                <i className="fa fa-bar-chart mr-2 ml-2" /> Charts
+                <i className="fa fa-bar-chart mr-2 ml-2" /> Reports
               </a>
             </Link>
             <Link onClick={this.handleOpenModal}>
               <a className="nav-link maps " onClick={this.handleOpenModal}>
-                <i className="fa fa-map-marker mr-2 ml-2" /> Google Maps
+                <i className="fa fa-map-marker mr-2 ml-2" /> Locations
               </a>
             </Link>
             <Link onClick={this.handleOpenModal}>
               <a className="nav-link  extra" onClick={this.handleOpenModal}>
-                <i className="fa fa-clipboard mr-2 ml-2" /> Extra
+                <i className="fa fa-clipboard mr-2 ml-2" /> Configurations
               </a>
             </Link>
 
-            <Form
+            {/* <Form
               inline
               className="custom-navbar-search vertical-search pt-2 ml-auto mr-3 position-relative"
             >
@@ -196,7 +197,7 @@ class Index extends React.Component {
                 className="mr-sm-2"
               />
               <i className="fa fa-search position-absolute" />
-            </Form>
+            </Form> */}
           </Nav>
         </Navbar>
 

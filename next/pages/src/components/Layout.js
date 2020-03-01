@@ -79,11 +79,11 @@ class Layout extends React.Component {
       <div className={classname} >
         <Head>
           <html className="theme-light">
-            <title>Swift Dashboard -{title}</title>
+            <title>MediQuick -{title}</title>
             <meta charSet="utf-8" />
             <link
               rel="icon"
-              href="/static/images/favicon.png"
+              href="/static/images/mediquick-logo.png"
               type="image/x-icon"
             />
             <meta
@@ -102,10 +102,10 @@ class Layout extends React.Component {
         >
           <Navbar className="flex-column p-0 align-items-left">
             <Navbar.Brand>
-              <Link href="/dashboard">
+              <Link href="/panel/dashboard">
                 <div className="brand-container d-flex justify-content-center align-items-center">
                   <Image
-                    src="/static/images/logo-light.png"
+                    src="/static/images/mediquick-logo.png"
                     fluid
                     className="logo-img"
                   />
@@ -184,7 +184,7 @@ class Layout extends React.Component {
           {/* End of Header Section */}
 
           {/* Right Sidebar */}
-          <div className={!this.state.chat ? 'hide' : 'show'}>
+          {/* <div className={!this.state.chat ? 'hide' : 'show'}>
             <div className="rightSide position-fixed theme-shadow chatbar">
               <div
                 className={
@@ -203,7 +203,7 @@ class Layout extends React.Component {
               </div>
               <RightSidebar />
             </div>
-          </div>
+          </div> */}
           {/* End of Right Sidebar */}
 
           {/* Main Container */}

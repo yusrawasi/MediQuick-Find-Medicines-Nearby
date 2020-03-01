@@ -17,11 +17,11 @@ class LoginLayout extends React.Component {
       <div className={classname}>
         <Head>
           <html className="theme-light">
-            <title>Ani nextjs Theme -{title}</title>
+            <title>MediQuick -{title}</title>
             <meta charSet="utf-8" />
             <link
               rel="icon"
-              href="/static/images/favicon.png"
+              href="/static/images/mediquick-logo.png"
               type="image/x-icon"
             />
             <meta

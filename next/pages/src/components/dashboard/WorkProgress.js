@@ -11,11 +11,11 @@ class WorkProgress extends React.Component {
           <thead>
             <tr>
               <th>#</th>
-              <th>Project Name</th>
-              <th>Head</th>
-              <th>Status</th>
+              <th>Medicine Name</th>
+              <th>Customer</th>
+              <th>Progress</th>
               <th>Total</th>
-              <th>Department</th>
+              <th>Order Status</th>
               <th />
             </tr>
           </thead>
@@ -28,13 +28,87 @@ class WorkProgress extends React.Component {
                   </Form.Group>
                 </Form>
               </td>
-              <td>Target Sell</td>
-              <td>John Smith</td>
+              <td>Panadol</td>
+              <td>Customer 1</td>
               <td>
                 <ProgressBar now={70} className="more-70" />
                 <span>70%</span>
               </td>
-              <td>$50,000</td>
+              <td>Rs. 50,000</td>
+              <td>
+                <span className="badge badge-primary p-1">Pending</span>
+              </td>
+              <td><Workchart /></td>
+            </tr>
+            <tr>
+              <td>
+                <Form>
+                  <Form.Group controlId="projectcheck" className="mb-0">
+                    <Form.Check type="checkbox" />
+                  </Form.Group>
+                </Form>
+              </td>
+              <td>Panadol</td>
+              <td>Customer 1</td>
+              <td>
+                <ProgressBar now={60} className="more-60" />
+                <span>60%</span>
+              </td>
+              <td>Rs. 50,000</td>
+              <td><span className="badge badge-green p-1">Delivered</span></td>
+              <td><Workchart /></td>
+            </tr>
+            <tr>
+              <td>
+                <Form>
+                  <Form.Group controlId="projectcheck" className="mb-0">
+                    <Form.Check type="checkbox" />
+                  </Form.Group>
+                </Form>
+              </td>
+              <td>Panadol</td>
+              <td>Customer 1</td>
+              <td>
+                <ProgressBar now={35} className="less-40" />
+                <span>35%</span>
+              </td>
+              <td>Rs. 50,000</td>
+              <td><span className="badge badge-red p-1">Cancelled</span></td>
+              <td><Workchart /></td>
+            </tr>
+            <tr>
+              <td>
+                <Form>
+                  <Form.Group controlId="projectcheck" className="mb-0">
+                    <Form.Check type="checkbox" />
+                  </Form.Group>
+                </Form>
+              </td>
+              <td>Panadol</td>
+              <td>Customer 1</td>
+              <td>
+                <ProgressBar now={35} className="less-40" />
+                <span>35%</span>
+              </td>
+              <td>Rs. 50,000</td>
+              <td><span className="badge badge-darkgreen p-1">Dispatched</span></td>
+              <td><Workchart /></td>
+            </tr>
+            <tr>
+              <td>
+                <Form>
+                  <Form.Group controlId="projectcheck" className="mb-0">
+                    <Form.Check type="checkbox" />
+                  </Form.Group>
+                </Form>
+              </td>
+              <td>Panadol</td>
+              <td>Customer 1</td>
+              <td>
+                <ProgressBar now={70} className="more-70" />
+                <span>70%</span>
+              </td>
+              <td>Rs. 50,000</td>
               <td>
                 <span className="badge badge-primary p-1">Marketing</span>
               </td>
@@ -48,13 +122,13 @@ class WorkProgress extends React.Component {
                   </Form.Group>
                 </Form>
               </td>
-              <td>Target Sell</td>
-              <td>John Smith</td>
+              <td>Panadol</td>
+              <td>Customer 1</td>
               <td>
                 <ProgressBar now={60} className="more-60" />
                 <span>60%</span>
               </td>
-              <td>$50,000</td>
+              <td>Rs. 50,000</td>
               <td><span className="badge badge-green p-1">Finance</span></td>
               <td><Workchart /></td>
             </tr>
@@ -66,13 +140,13 @@ class WorkProgress extends React.Component {
                   </Form.Group>
                 </Form>
               </td>
-              <td>Target Sell</td>
-              <td>John Smith</td>
+              <td>Panadol</td>
+              <td>Customer 1</td>
               <td>
                 <ProgressBar now={35} className="less-40" />
                 <span>35%</span>
               </td>
-              <td>$50,000</td>
+              <td>Rs. 50,000</td>
               <td><span className="badge badge-red p-1">Development</span></td>
               <td><Workchart /></td>
             </tr>
@@ -84,87 +158,13 @@ class WorkProgress extends React.Component {
                   </Form.Group>
                 </Form>
               </td>
-              <td>Target Sell</td>
-              <td>John Smith</td>
+              <td>Panadol</td>
+              <td>Customer 1</td>
               <td>
                 <ProgressBar now={35} className="less-40" />
                 <span>35%</span>
               </td>
-              <td>$50,000</td>
-              <td><span className="badge badge-darkgreen p-1">Design</span></td>
-              <td><Workchart /></td>
-            </tr>
-            <tr>
-              <td>
-                <Form>
-                  <Form.Group controlId="projectcheck" className="mb-0">
-                    <Form.Check type="checkbox" />
-                  </Form.Group>
-                </Form>
-              </td>
-              <td>Target Sell</td>
-              <td>John Smith</td>
-              <td>
-                <ProgressBar now={70} className="more-70" />
-                <span>70%</span>
-              </td>
-              <td>$50,000</td>
-              <td>
-                <span className="badge badge-primary p-1">Marketing</span>
-              </td>
-              <td><Workchart /></td>
-            </tr>
-            <tr>
-              <td>
-                <Form>
-                  <Form.Group controlId="projectcheck" className="mb-0">
-                    <Form.Check type="checkbox" />
-                  </Form.Group>
-                </Form>
-              </td>
-              <td>Target Sell</td>
-              <td>John Smith</td>
-              <td>
-                <ProgressBar now={60} className="more-60" />
-                <span>60%</span>
-              </td>
-              <td>$50,000</td>
-              <td><span className="badge badge-green p-1">Finance</span></td>
-              <td><Workchart /></td>
-            </tr>
-            <tr>
-              <td>
-                <Form>
-                  <Form.Group controlId="projectcheck" className="mb-0">
-                    <Form.Check type="checkbox" />
-                  </Form.Group>
-                </Form>
-              </td>
-              <td>Target Sell</td>
-              <td>John Smith</td>
-              <td>
-                <ProgressBar now={35} className="less-40" />
-                <span>35%</span>
-              </td>
-              <td>$50,000</td>
-              <td><span className="badge badge-red p-1">Development</span></td>
-              <td><Workchart /></td>
-            </tr>
-            <tr>
-              <td>
-                <Form>
-                  <Form.Group controlId="projectcheck" className="mb-0">
-                    <Form.Check type="checkbox" />
-                  </Form.Group>
-                </Form>
-              </td>
-              <td>Target Sell</td>
-              <td>John Smith</td>
-              <td>
-                <ProgressBar now={35} className="less-40" />
-                <span>35%</span>
-              </td>
-              <td>$50,000</td>
+              <td>Rs. 50,000</td>
               <td><span className="badge badge-darkgreen p-1">Design</span></td>
               <td><Workchart /></td>
             </tr>

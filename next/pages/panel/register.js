@@ -2,7 +2,39 @@ import * as React from 'react';
 import LoginLayout from '../src/components/LoginLayout';
 import Link from 'next/link';
 import {Row, Col, Button, Form, Image} from 'react-bootstrap';
+import axios from 'axios';
+
 class Register extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.name = React.createRef();
+    this.email = React.createRef();
+    this.password = React.createRef();
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onSubmit(e){
+    e.preventDefault();
+    // console.log(this.name.current.value);
+    // console.log(this.email.current.value);
+    // console.log(this.password.current.value);
+
+    axios.post('/api/register', {
+      u_name: this.name.current.value,
+      email: this.email.current.value,
+      password: this.password.current.value,
+      password_confirmation: this.password.current.value,
+      contact: "03312444025"
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
   render () {
     return (
       <LoginLayout title="Registration" classname="Register">
@@ -13,33 +45,33 @@ class Register extends React.Component {
               <div className="d-flex flex-column login-container">
                 <div className="d-flex align-items-center justify-content-center mb-5 brand-container">
                   <Image
-                    src="/static/images/logo-dark.png"
+                    src="/static/images/mediquick-logo.png"
                     fluid
                     className="logo-img"
                   />
                 </div>
-                <Form className="text-center">
+                <Form className="text-center" onSubmit = {this.onSubmit}>
                   <Form.Group controlId="Name">
-                    <Form.Control type="text" placeholder="Your Name" />
+                    <Form.Control type="text" placeholder="Your Name" ref={this.name}/>
                   </Form.Group>
                   <Form.Group controlId="LoginEmail">
-                    <Form.Control type="email" placeholder="Email Address" />
+                    <Form.Control type="email" placeholder="Email Address" ref={this.email}/>
                   </Form.Group>
                   <Form.Group
                     controlId="LoginPassword"
                     className="custom-password position-relative"
                   >
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control type="password" placeholder="Password" ref={this.password}/>
                     <span className="position-absolute">
                       <i className="fa fa-eye" />
                     </span>
                   </Form.Group>
-                  <Button className="btn btn-block btn-lg btn-secondary">
+                  <Button type="submit" className="btn btn-block btn-lg btn-secondary">
                     Submit
                   </Button>
                   <p className="m-t-15 text-xlg">
                     <span className="text-muted">Do you have an account?</span>
-                    <Link href="/index"><span> Login here</span></Link>
+                    <Link href="/panel"><a> Login here</a></Link>
                   </p>
                 </Form>
               </div>
@@ -48,7 +80,7 @@ class Register extends React.Component {
           <Col lg={6} md={12} className="p-0">
             <div className="d-flex align-items-center justify-content-center flex-column h-100vh login-box text-center">
               <div>
-                <h1 className="mb-3 ">Hello, Friend</h1>
+                <h1 className="mb-3 ">MediQuick</h1>
                 <p className="mb-4">
                   Enter your user details and Start journey with us
                 </p>
@@ -56,7 +88,7 @@ class Register extends React.Component {
                   variant="outline-light"
                   className="btn btn-block btn-lg"
                 >
-                  <Link href="/index"><span>Login</span></Link>
+                  <Link href="/panel"><a>Login</a></Link>
                 </Button>
               </div>
             </div>
