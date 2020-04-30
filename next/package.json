@@ -21,7 +21,7 @@
     "font-awesome": "^4.7.0",
     "font-awesome-sass": "^4.7.0",
     "google-maps-react": "^2.0.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "next": "^9.1.6",
     "next-fonts": "^0.17.0",
     "node-sass": "^4.12.0",
